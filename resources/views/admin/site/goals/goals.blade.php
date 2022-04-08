@@ -35,12 +35,13 @@
 
                                 </div>
 
-                                <table class="table table-bordered border-top mb-0">
+                                <table class="table table-bordered border-top mb-0 table-responsive">
                                     <thead>
                                         <tr>
                                             <td>#</td>
                                             <th>{{ __('system.title') }}</th>    
                                             <th> {{ __('system.descripe') }}</th>    
+                                            <th> {{ __('system.lang') }}</th>    
                                             <th>{{ __('system.status') }}</th>    
                                         
                                             <th>{{ __('system.operation') }}</th>    
@@ -54,6 +55,7 @@
                                             <td>{{$data->id}}</td>
                                             <th>{{$data->title}}</th>    
                                             <th>{{$data->text}}</th>    
+                                            <th>{{$data->lang}}</th>    
                                            
                                             <th>
                                                 @if($data->is_active==1)

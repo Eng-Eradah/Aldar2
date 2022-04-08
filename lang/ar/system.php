@@ -19,6 +19,7 @@ return [
     'side.goals' =>' اهدافنا',
     'side.Service' =>' خدماتنا',
     'side.web' =>'معلومات النظام',
+    'side.slider' =>'شريط التمرير',
     'side.user' =>' عملائنا ',
     'active' =>' مفعل',
     'notactive' =>' موقف',
@@ -36,4 +37,9 @@ return [
     'Missions'=>'رسالتنا',
     'Scopes'=>'نطاق عملنا',
     'Strategys'=>'استراتيجية الدار العربية',
+    'subTitle'=>'العنوان الفرعي',
+    'mainTitle'=>'العنوان الرئيسي',
+    'lang'=>'اللغة',
+    'iamge'=>'الصورة',
+
 ];

@@ -43,6 +43,15 @@
             @csrf
             <div class="row m-2">
                 <div class="col-md-12 ">
+                    <div class="form-group col-md-4">
+                        <label for="inputState" class="col-form-label">{{ __('system.lang') }}</label>
+                        <select id="inputState" name="lang" class="form-control">
+                            @foreach ($langs as $lang)
+
+                                <option value="{{ $lang->lang }}" @if(isset($data->lang) && ($data->lang==$lang->lang)) selected  @endif>{{ $lang->value }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label class="form-label text-dark"> {{ __('system.title') }}</label>
                         @if(isset($data->id))

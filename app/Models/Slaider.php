@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Slaider extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    public function getImageAttribute($value)
+    {
+        return url('images/silder/') . '/' . $value;
+    }
 }

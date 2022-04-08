@@ -5,7 +5,7 @@
 
     <div class="page-header">
         
-    <button type="button" class="btn btn-primary" ><a href="{{route('addService')}}" class="text-white"><i class="fe fe-plus mr-2"></i>{{ __('system.add') }}</a></button>
+    <button type="button" class="btn btn-primary" ><a href="{{route('addSlider')}}" class="text-white"><i class="fe fe-plus mr-2"></i>{{ __('system.add') }}</a></button>
     </div>
     <!-- /Page Header-->
 
@@ -35,13 +35,14 @@
 
                                 </div>
 
-                                <table class="table table-bordered border-top mb-0 table-responsive">
+                                <table class="table table-bordered border-top mb-0 table-responsive ">
                                     <thead>
                                         <tr>
                                             <td>#</td>
-                                            <th>{{ __('system.title') }}</th>    
-                                            <th> {{ __('system.descripe') }}</th>    
-                                            <th> {{ __('system.lang') }}</th>    
+                                            <th> {{ __('system.mainTitle') }}</th>    
+                                            <th>{{ __('system.subTitle') }}</th>    
+                                            <th>{{ __('system.image') }}</th>    
+                                            <th>{{ __('system.lang') }}</th>    
                                             <th>{{ __('system.status') }}</th>    
                                         
                                             <th>{{ __('system.operation') }}</th>    
@@ -53,8 +54,9 @@
                                         
                                         <tr>
                                             <td>{{$data->id}}</td>
-                                            <th>{{$data->title}}</th>    
-                                            <th>{{$data->text}}</th>    
+                                            <th>{{$data->main_title}}</th>    
+                                            <th>{{$data->sub_title}}</th>    
+                                            <th><img width="200px"src="{{$data->image}}"></th>    
                                             <th>{{$data->lang}}</th>    
                                            
                                             <th>
@@ -72,12 +74,12 @@
                                             <th>
                                                 
                                                 <div class="btn-group">
-                                                    <a href="{{route('addService',$data->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{route('addSlider',$data->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                                 
                                                     @if($data->is_active==1)
-                                                    <a href="{{route('toggle_service',$data->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                    <a href="{{route('toggle_silder',$data->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                     @else
-                                                    <a href="{{route('toggle_service',$data->id)}}" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                                    <a href="{{route('toggle_silder',$data->id)}}" class="btn btn-success"><i class="fa fa-check"></i></a>
                                                     @endif
                                                     
                     

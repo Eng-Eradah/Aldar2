@@ -8,18 +8,19 @@ use App\Models\ConfigureSystem;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Utilities\Toggle;
+use App\Models\Lang;
 
 class ConfigureController extends Controller
 {
     //
     public function index()
     {
-        $about = ConfigureSystem::where('title','AboutUs')->first();
-        $Brife = ConfigureSystem::where('title','Brife')->first();
-        $Vision = ConfigureSystem::where('title','Vision')->first();
-        $Mission = ConfigureSystem::where('title','Mission')->first();
-        $Scope = ConfigureSystem::where('title','Scope')->first();
-        $Strategy = ConfigureSystem::where('title','Strategy')->first();
+        $about = ConfigureSystem::where('title','AboutUs')->get();
+        $Brife = ConfigureSystem::where('title','Brife')->get();
+        $Vision = ConfigureSystem::where('title','Vision')->get();
+        $Mission = ConfigureSystem::where('title','Mission')->get();
+        $Scope = ConfigureSystem::where('title','Scope')->get();
+        $Strategy = ConfigureSystem::where('title','Strategy')->get();
         return view('admin.site.configure.index')
             ->with('about', $about)
             ->with('Brife', $Brife)
@@ -29,11 +30,13 @@ class ConfigureController extends Controller
             ->with('Strategy', $Strategy);
 
     }
-    public function create($type)
+    public function create($type,$id=null)
     {
-        $goal = ConfigureSystem::where('title',$type)->first();
+        $goal = ConfigureSystem::whereId($id)->where('title',$type)->first();
+        $lang = Lang::get();
         return view('admin.site.configure.create')
         ->with('type',$type)
+        ->with('langs',$lang)
         ->with('data',$goal);
 
     }
@@ -42,14 +45,16 @@ class ConfigureController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'min:5'],
             'descrption' => ['required','min:10'],
+            'lang' => ['required'],
 
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
-            $result=ConfigureSystem::updateOrCreate(['title'=>$request->title],[
+            $result=ConfigureSystem::updateOrCreate(['title'=>$request->title,'lang'=>$request->input('lang')],[
          'title'=>$request->input('title'),
          'description'=>$request->input('descrption'),
+         'lang'=>$request->input('lang'),
         ]);
         if ($result) {
             return redirect()->back()->with(['success' => 'تم انشاء القسم بنجاح']);

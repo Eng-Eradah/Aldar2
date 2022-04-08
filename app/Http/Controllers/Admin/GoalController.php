@@ -7,6 +7,7 @@ use App\Models\Goal;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Utilities\Toggle;
+use App\Models\Lang;
 
 class GoalController extends Controller
 {
@@ -20,8 +21,10 @@ class GoalController extends Controller
     }
     public function create($id=null)
     {
+        $lang = Lang::get();
         $goal = Goal::whereId($id)->first();
         return view('admin.site.goals.create')
+        ->with('langs',$lang)
         ->with('data',$goal);
 
     }
@@ -30,6 +33,7 @@ class GoalController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'min:5'],
             'descrption' => ['required','min:10'],
+            'lang' => ['required'],
 
         ]);
         if ($validator->fails()) {
@@ -38,6 +42,7 @@ class GoalController extends Controller
             $result=Goal::updateOrCreate(['id'=>$request->id],[
          'title'=>$request->input('title'),
          'text'=>$request->input('descrption'),
+         'lang'=>$request->input('lang'),
         ]);
         if ($result) {
             return redirect()->back()->with(['success' => 'تم انشاء القسم بنجاح']);

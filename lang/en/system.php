@@ -20,6 +20,7 @@ return [
     'side.Service' =>' Services',
     'side.web' =>' WebSite Info',
     'side.user' =>' Users',
+    'side.slider' =>'Slider',
     'active' =>' Enabled',
     'notactive' =>' Disenabled',
     'add' =>' Add New',
@@ -36,4 +37,8 @@ return [
     'Missions'=>'Missions',
     'Scopes'=>'Scopes',
     'Strategys'=>'Strategys',
+    'subTitle'=>'Sub Title',
+    'mainTitle'=>'Main Title',
+    'lang'=>'Language',
+    'image'=>'image',
 ];

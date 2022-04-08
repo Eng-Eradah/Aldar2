@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-
     <div class="side-app">
 
         <!-- Page Header-->
@@ -36,55 +35,70 @@
 
             </div>
             
-                    <form class="card" method="POST" action="{{ route('add_service') }}">
-            @csrf
-            <div class="row m-2">
-                <div class="col-md-12 ">
-                    <div class="form-group col-md-4">
-                        <label for="inputState" class="col-form-label">{{ __('system.lang') }}</label>
-                        <select id="inputState" name="lang" class="form-control">
-                            @foreach ($langs as $lang)
+            <form class="card" method="POST" action="{{ route('add_silder') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="row m-2">
+                    <div class="col-md-12 ">
+                        <div class="form-group col-md-4">
+                            <label for="inputState" class="col-form-label">{{ __('system.lang') }}</label>
+                            <select id="inputState" name="lang" class="form-control">
+                                @foreach ($langs as $lang)
 
-                                <option value="{{ $lang->lang }}" @if(isset($data->lang) && ($data->lang==$lang->lang)) selected  @endif>{{ $lang->value }}</option>
-                            @endforeach
-                        </select>
+                                    <option value="{{ $lang->lang }}" @if(isset($data->lang) && ($data->lang==$lang->lang)) selected  @endif>{{ $lang->value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label text-dark"> {{ __('system.mainTitle') }}</label>
+                            @if (isset($data->id))
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                            @endif
+                        <input type="text" name="mainTitle" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
+                            {{ old('mainTitle') }} @endif"
+                            placeholder="{{ __('system.mainTitle') }}">
+                            <span id="c_nameArError" class="jsError" role="alert"></span>
+                            @error('mainTitle')
+                                <div class=" text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 ">
+                        <div class="form-group">
+                            <label class="form-label text-dark"> {{ __('system.subTitle') }}</label>
+                            @if (isset($data->id))
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                            @endif
+                            <input type="text" name="subTitle" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else {{ old('subTitle') }} @endif"
+                            placeholder="{{ __('system.subTitle') }}">
+                            <span id="c_nameArError" class="jsError" role="alert"></span>
+                            @error('subTitle')
+                                <div class=" text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label text-dark"> {{ __('system.title') }}</label>
-                        @if(isset($data->id))
-                    <input type="hidden" name="id" value="{{$data->id}}">
-                        @endif
-                        <input type="text" name="title" class="form-control" value="@if(isset($data->id)){{($data->title) }} @else  {{old('title')}}@endif"
-                            placeholder="{{ __('system.title') }}">
-                        <span id="c_nameArError" class="jsError" role="alert"></span>
-                        @error('title')
-                            <div class=" text-danger">{{ $message }}</div>
-                        @enderror
+                        <label class="form-label text-dark">الصورة الرمزية (اختياري)</label>
+
                     </div>
-                </div>
-                <div class="col-md-12">
 
-                    
-                        <label class="form-label text-dark">{{ __('system.descripe') }}</label>
-                   
-                        <textarea type="text" name="descrption" rows="20"
-                            class="form-control textarea">@if(isset($data->id)){{($data->text) }} @else  {{old('descrption')}}@endif</textarea>
 
-                        @error('descrption')
-                            <div class=" text-danger">{{ $message }}</div>
-                        @enderror
+                    <input type="file" class="dropify" data-default-file="@if(isset($data->image)) {{ $data->image }} @endif" name="image" data-height="180" />
+
+
+                    <span id="c_imgError" class="jsError" role="alert"></span>
 
                 </div>
                 <div class="card-footer text-left">
                     <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
                 </div>
 
-            </div>
-            </form>
-
-
-
         </div>
+        </form>
+
+
+
+    </div>
 
     </div>
 
@@ -116,10 +130,10 @@
             /* enable automatic uploads of images represented by blob or data URIs*/
             automatic_uploads: true,
             /*
-      URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-      images_upload_url: 'postAcceptor.php',
-      here we add custom filepicker only to Image dialog
-     */
+          URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+          images_upload_url: 'postAcceptor.php',
+          here we add custom filepicker only to Image dialog
+         */
             file_picker_types: 'image',
             /* and here's our custom image picker*/
             file_picker_callback: function(cb, value, meta) {

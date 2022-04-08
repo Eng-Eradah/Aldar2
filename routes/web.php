@@ -5,6 +5,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Admin\GoalController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ConfigureController;
+use App\Http\Controllers\Admin\SliderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,7 @@ Route::get('/', function () {
 });
 //configure system page
 Route::get('/configure',[ConfigureController::class,'index'])->name('configure');
-Route::get('/addconfigure/{type}',[ConfigureController::class,'create'])->name('addconfigure');
+Route::get('/addconfigure/{type}/{id?}',[ConfigureController::class,'create'])->name('addconfigure');
 Route::get('/toggle_configure/{id?}',[ConfigureController::class,'toggle'])->name('toggle_configure');
 Route::post('/add_configure',[ConfigureController::class,'store'])->name('add_configure');
 
@@ -35,6 +36,11 @@ Route::get('/service',[ServiceController::class,'index'])->name('service');
 Route::get('/addService/{id?}',[ServiceController::class,'create'])->name('addService');
 Route::get('/toggle_service/{id?}',[ServiceController::class,'toggle'])->name('toggle_service');
 Route::post('/add_service',[ServiceController::class,'store'])->name('add_service');
+//silder page
+Route::get('/slider',[SliderController::class,'index'])->name('slider');
+Route::get('/addSlider/{id?}',[SliderController::class,'create'])->name('addSlider');
+Route::get('/toggle_silder/{id?}',[SliderController::class,'toggle'])->name('toggle_silder');
+Route::post('/add_silder',[SliderController::class,'store'])->name('add_silder');
 
 });
 Route::middleware([
