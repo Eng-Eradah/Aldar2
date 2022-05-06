@@ -12,6 +12,9 @@ use App\Http\Controllers\Admin\LangController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\StaticPageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +25,7 @@ use App\Http\Controllers\Admin\ReportController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]],function(){
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth' ]],function(){
     Route::group(['prefix' =>'admin'],function(){
 
 //configure system page
@@ -77,9 +80,23 @@ Route::get('/report',[ReportController::class,'index'])->name('report');
 Route::get('/addreport/{id?}',[ReportController::class,'create'])->name('addreport');
 Route::get('/toggle_report/{id?}',[ReportController::class,'toggle'])->name('toggle_report');
 Route::post('/add_report',[ReportController::class,'store'])->name('add_report');
+//static page
+Route::get('/page',[StaticPageController::class,'index'])->name('page');
+Route::get('/addpage/{id?}',[StaticPageController::class,'create'])->name('addpage');
+Route::get('/toggle_page/{id?}',[StaticPageController::class,'toggle'])->name('toggle_page');
+Route::post('/add_page',[StaticPageController::class,'store'])->name('add_page');
+Route::get('/static',[StaticPageController::class,'static'])->name('static');
+Route::get('/addstatic/{id?}',[StaticPageController::class,'createStatic'])->name('addstatic');
+Route::get('/toggle_static/{id?}',[StaticPageController::class,'toggleStatic'])->name('toggle_static');
+Route::post('/add_static',[StaticPageController::class,'storeStatic'])->name('add_static');
 
 });
 });
+ // user authentication 
+ Route::get('/login',[AuthController::class,'index'])->name('login');
+ Route::post('/check_user',[AuthController::class,'checkUser'])->name('check_user');
+ Route::post('/logout_user',[AuthController::class,'logout'])->name('logout_user');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -18591,7 +18591,7 @@ footer .border-top {
 	right: 0;
 }
 .construction-image {
-	background: url(../images/media/construction.jpg);
+	
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -18605,7 +18605,7 @@ footer .border-top {
 	z-index: 1;
 	left: 0;
 	right: 0;
-	background: linear-gradient(-225deg, rgba(72, 1, 255, .9) 0, rgba(121, 24, 242, .9) 48%, rgba(172, 50, 228, .9) 100%);
+	background-color:#d7e4eb;
 }
 .construction {
 	z-index: 1;
