@@ -70,9 +70,34 @@
 
 </script>
 
+<script src='https://cdn.tiny.cloud/1/ol5inlqmowux5zilp0yqczqziy4sj0npgw2ropavdlns1vvp/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+</script>
+<script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+</script>
+<script>
+  function changevid(){
+      $type=	$('#vidType').val();
+      console.log($type);
+      if($type==0){
+          $('#link').css('display','none');
+          $('#linkSpan').css('color','#2e384d');
+          $('#source').css('display','block');
+          $('#sourcSpan').css('color','#8bc7c7');
+      }
+      else{
+          $('#source').css('display','none');
+          $('#link').css('display','block');
+          $('#linkSpan').css('color','#8bc7c7');
+          $('#sourcSpan').css('color','#2e384d');
+          
+      }
 
-</body>
-</html>
+  }
+
+</script>
 
 </body>
 </html>

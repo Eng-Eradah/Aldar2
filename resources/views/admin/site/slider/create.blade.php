@@ -35,8 +35,13 @@
 
             </div>
             
-            <form class="card" method="POST" action="{{ route('add_silder') }}" enctype="multipart/form-data">
-                @csrf
+ 
+                @if (isset($data->id))
+                <form class="card" method="POST" action="{{ route('add_silder', $data->id) }}" enctype="multipart/form-data">
+                @else
+                    <form class="card" method="POST" action="{{ route('add_silder') }}" enctype="multipart/form-data">
+            @endif              
+             @csrf
                 <div class="row m-2">
                     <div class="col-md-12 ">
                         <div class="form-group col-md-4">
@@ -52,7 +57,8 @@
                             <label class="form-label text-dark"> {{ __('system.mainTitle') }}</label>
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
-                            @endif
+                                <input type="hidden" name="logo" value="{{$data->image}}">
+                                @endif
                         <input type="text" name="mainTitle" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
                             {{ old('mainTitle') }} @endif"
                             placeholder="{{ __('system.mainTitle') }}">
@@ -66,9 +72,7 @@
                     <div class="col-md-12 ">
                         <div class="form-group">
                             <label class="form-label text-dark"> {{ __('system.subTitle') }}</label>
-                            @if (isset($data->id))
-                                <input type="hidden" name="id" value="{{ $data->id }}">
-                            @endif
+                           
                             <input type="text" name="subTitle" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else {{ old('subTitle') }} @endif"
                             placeholder="{{ __('system.subTitle') }}">
                             <span id="c_nameArError" class="jsError" role="alert"></span>
@@ -83,7 +87,7 @@
                     </div>
 
 
-                    <input type="file" class="dropify" data-default-file="@if(isset($data->image)) {{ $data->image }} @endif" name="image" data-height="180" />
+                    <input type="file" class="dropify" data-default-file="@if(isset($data->image)) {{ $data->image }} @endif" name="image" data-height="180"  accept="image/*"/>
 
 
                     <span id="c_imgError" class="jsError" role="alert"></span>

@@ -9,5 +9,8 @@ class Website extends Model
 {
     use HasFactory;
     protected $guarded = [];
-
+    public function getIconAttribute($value)
+    {
+        return url('images/website/') . '/' . $value;
+    }
 }

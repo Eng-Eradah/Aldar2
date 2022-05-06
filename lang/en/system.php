@@ -19,6 +19,7 @@ return [
     'side.goals' =>' Goals',
     'side.Service' =>' Services',
     'side.web' =>' WebSite Info',
+    'side.lang' =>' language',
     'side.user' =>' Users',
     'side.slider' =>'Slider',
     'active' =>' Enabled',

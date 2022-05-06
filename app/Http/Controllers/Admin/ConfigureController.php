@@ -33,7 +33,7 @@ class ConfigureController extends Controller
     public function create($type,$id=null)
     {
         $goal = ConfigureSystem::whereId($id)->where('title',$type)->first();
-        $lang = Lang::get();
+        $lang = Lang::where('is_active',1)->get();
         return view('admin.site.configure.create')
         ->with('type',$type)
         ->with('langs',$lang)
@@ -57,7 +57,7 @@ class ConfigureController extends Controller
          'lang'=>$request->input('lang'),
         ]);
         if ($result) {
-            return redirect()->back()->with(['success' => 'تم انشاء القسم بنجاح']);
+            return redirect()->back()->with(['success' => 'تم العملية  بنجاح   ']);
         }
 
         return redirect()->back()->with(['error' => 'فشلت العملية يرجى التأكد من صحة البيانات المدخلة']);

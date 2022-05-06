@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('link')->nullable();
             $table->text('icon');
+            $table->string('lang', 10);
             $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();

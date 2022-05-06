@@ -21,7 +21,7 @@ class GoalController extends Controller
     }
     public function create($id=null)
     {
-        $lang = Lang::get();
+        $lang = Lang::where('is_active',1)->get();
         $goal = Goal::whereId($id)->first();
         return view('admin.site.goals.create')
         ->with('langs',$lang)
@@ -45,7 +45,7 @@ class GoalController extends Controller
          'lang'=>$request->input('lang'),
         ]);
         if ($result) {
-            return redirect()->back()->with(['success' => 'تم انشاء القسم بنجاح']);
+            return redirect()->back()->with(['success' => 'تم العملية  بنجاح   ']);
         }
 
         return redirect()->back()->with(['error' => 'فشلت العملية يرجى التأكد من صحة البيانات المدخلة']);

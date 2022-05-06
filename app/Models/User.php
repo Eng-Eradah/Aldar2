@@ -9,9 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
+
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -27,6 +30,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'two_factor_secret',
+        'remember_token',
+        'profile_photo_path',
+
     ];
 
     /**
@@ -36,9 +43,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
         'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
@@ -58,4 +63,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function getProfilePhotoPathAttribute($value)
+    {
+        return url('images/user/') . '/' . $value;
+    }
+    public function hasRole(String $roleName)
+    {
+        return $this->roles()->where('name', $roleName)->exists();
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    public function addRole(String $roleName)
+    {
+        $role = Role::where('name', $roleName)->first();
+
+        if ($role) $this->roles()->save($role);
+    }
+   
 }

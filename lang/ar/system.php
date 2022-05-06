@@ -17,6 +17,7 @@ return [
     'law' =>'جميع الحقوق محفوظة لدى',
     'side.configure' =>'تهيئة النظام',
     'side.goals' =>' اهدافنا',
+    'side.lang' =>' اللغة',
     'side.Service' =>' خدماتنا',
     'side.web' =>'معلومات النظام',
     'side.slider' =>'شريط التمرير',

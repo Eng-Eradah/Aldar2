@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('text');
+            $table->string('lang', 10);
             $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();

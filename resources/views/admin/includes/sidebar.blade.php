@@ -39,6 +39,10 @@
 						
 						</li>
 						<li class="slide">
+							<a class="side-menu__item"  href="{{route('lang')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.lang') }}</span></a>
+						
+						</li>
+						<li class="slide">
 							<a class="side-menu__item"  href="#"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.user') }}</span></a>
 						
 						</li>
