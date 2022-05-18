@@ -13,6 +13,10 @@ class Book extends Model
     {
         return url('images/book/') . '/' . $value;
     }
+    public function getFileAttribute($value)
+    {
+        return url('images/bookFile/') . '/' . $value;
+    }
     public function Category()
     {
         return $this->belongsTo(Category::class, 'category_id');

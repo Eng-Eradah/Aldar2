@@ -41,7 +41,8 @@ class BookController extends Controller
             'image' => ['nullable','image','mimes:jpg,png,jpeg,gif,svg'],
             'lang' => ['required', 'exists:langs,lang'],
             'auther' => ['required', 'min:3', 'max:20'],
-            'download_link' => ['required', 'url'],
+            'publisher' => ['required', 'min:3', 'max:20'],
+            'file' =>['nullable','mimes:pdf'],
             'version' => ['nullable'],
             'category_id' => ['required', 'exists:categories,id'],
 
@@ -55,7 +56,8 @@ class BookController extends Controller
                 'image' => $request->hasFile('image') ? $this->upload_img($request->file('image')) : ($request->input('logo') ? explode('/', $request->input('logo'))[5] : "default.png"),
                 'lang' => $request->input('lang'),
                 'auther' => $request->input('auther'),
-                'download_link' => $request->input('download_link'),
+                'publisher' => $request->input('publisher'),
+                'file' => $request->hasFile('file') ? $this->upload_file($request->file('file'),$request->input('title')) : ($request->input('oldFile') ? explode('/', $request->input('oldFile'))[5] : "default.png"),
                 'version' => $request->input('version') ?? 0,
                 'category_id' => $request->input('category_id'),
             ]);
@@ -82,6 +84,12 @@ class BookController extends Controller
     {
         $path = '/images/book/';
         return Upload::upload($file_img, $path);
+
+    }
+    public function upload_file($file_img,$title)
+    {
+        $path = '/images/bookFile/';
+        return Upload::file($file_img, $path,$title);
 
     }
 }

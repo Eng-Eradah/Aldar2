@@ -14,10 +14,11 @@ return [
     */
 
     'logo' => 'الدار العربية',
+    'manage' => ' إدارة',
     'law' =>'جميع الحقوق محفوظة لدى',
     'side.configure' =>'تهيئة النظام',
     'side.goals' =>' اهدافنا',
-    'side.lang' =>' اللغة',
+    'side.lang' =>' اللغات',
     'side.Service' =>' خدماتنا',
     'side.web' =>'معلومات النظام',
     'side.slider' =>'شريط التمرير',
@@ -33,7 +34,7 @@ return [
     'status' =>' الحالة',
     'operation' =>' العمليات',
     'Abouts'=>'من نحن',
-    'Brifes'=>'نبذة ',
+    'Brifes'=>'نبذة عنا ',
     'Visions'=>'رؤيتنا',
     'Missions'=>'رسالتنا',
     'Scopes'=>'نطاق عملنا',
@@ -41,6 +42,6 @@ return [
     'subTitle'=>'العنوان الفرعي',
     'mainTitle'=>'العنوان الرئيسي',
     'lang'=>'اللغة',
-    'iamge'=>'الصورة',
+    'image'=>'الصورة',
 
 ];

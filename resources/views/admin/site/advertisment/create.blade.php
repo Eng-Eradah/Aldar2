@@ -35,7 +35,7 @@
 
             </div>
             
-            <form class="card" method="POST" action="{{ route('add_silder') }}" enctype="multipart/form-data">
+            <form class="card" method="POST" action="{{ route('add_ads') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row m-2">
                     <div class="col-md-12 ">
@@ -49,15 +49,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label text-dark"> {{ __('system.mainTitle') }}</label>
+                            <label class="form-label text-dark"> {{ __('system.title') }}</label>
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
                             @endif
-                        <input type="text" name="mainTitle" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
-                            {{ old('mainTitle') }} @endif"
-                            placeholder="{{ __('system.mainTitle') }}">
+                        <input type="text" name="title" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
+                            {{ old('title') }} @endif"
+                            placeholder="{{ __('system.title') }}">
                             <span id="c_nameArError" class="jsError" role="alert"></span>
-                            @error('mainTitle')
+                            @error('title')
                                 <div class=" text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -65,14 +65,14 @@
 
                     <div class="col-md-12 ">
                         <div class="form-group">
-                            <label class="form-label text-dark"> {{ __('system.subTitle') }}</label>
+                            <label class="form-label text-dark"> {{ __('system.descripe') }}</label>
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
                             @endif
-                            <input type="text" name="subTitle" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else {{ old('subTitle') }} @endif"
-                            placeholder="{{ __('system.subTitle') }}">
+                            <input type="text" name="description" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else {{ old('description') }} @endif"
+                            placeholder="{{ __('system.description') }}">
                             <span id="c_nameArError" class="jsError" role="alert"></span>
-                            @error('subTitle')
+                            @error('description')
                                 <div class=" text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -104,81 +104,3 @@
 
 
 @endsection
-
-
-@push('tiny')
-
-    <script>
-        tinymce.init({
-            selector: '.textarea',
-            language_url: '/public/langs/ar.js',
-            height: "480",
-            language: 'ar',
-            directionality: 'rtl',
-            contextmenu: 'link image table',
-            plugins: 'image advlist lists imagetools code table link emoticons searchreplace ',
-            toolbar: 'undo redo  image  | table | link | emoticons | styleselect | bold italic |  alignleft aligncenter alignright alignjustify  bullist numlist outdent indent forecolor backcolor ',
-            menu: {
-                favs: {
-                    title: 'المفضلة',
-                    items: '   searchreplace | emoticons'
-                }
-            },
-            menubar: 'favs edit view insert format  help',
-            /* enable title field in the Image dialog*/
-            image_title: true,
-            /* enable automatic uploads of images represented by blob or data URIs*/
-            automatic_uploads: true,
-            /*
-          URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-          images_upload_url: 'postAcceptor.php',
-          here we add custom filepicker only to Image dialog
-         */
-            file_picker_types: 'image',
-            /* and here's our custom image picker*/
-            file_picker_callback: function(cb, value, meta) {
-                var input = document.createElement('input');
-                input.setAttribute('type', 'file');
-                input.setAttribute('accept', 'image/*');
-
-                /*
-                  Note: In modern browsers input[type="file"] is functional without
-                  even adding it to the DOM, but that might not be the case in some older
-                  or quirky browsers like IE, so you might want to add it to the DOM
-                  just in case, and visually hide it. And do not forget do remove it
-                  once you do not need it anymore.
-                */
-
-                input.onchange = function() {
-                    var file = this.files[0];
-
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        /*
-                          Note: Now we need to register the blob in TinyMCEs image blob
-                          registry. In the next release this part hopefully won't be
-                          necessary, as we are looking to handle it internally.
-                        */
-                        var id = 'blobid' + (new Date()).getTime();
-                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                        var base64 = reader.result.split(',')[1];
-                        var blobInfo = blobCache.create(id, file, base64);
-                        blobCache.add(blobInfo);
-
-                        /* call the callback and populate the Title field with the file name */
-                        cb(blobInfo.blobUri(), {
-                            title: file.name
-                        });
-                    };
-                    reader.readAsDataURL(file);
-                };
-
-                input.click();
-            },
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        });
-
-    </script>
-
-
-@endpush

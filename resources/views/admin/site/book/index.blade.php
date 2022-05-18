@@ -43,7 +43,7 @@
                                             <th> الكاتب</th>    
                                             <th>{{ __('system.descripe') }}</th>    
                                             <th>صورة الكتاب</th>    
-                                            <th>رابط التحميل</th>    
+                                            <th> الكتاب</th>    
                                             <th>عدد مرات التحميل</th>    
                                             <th>{{ __('system.lang') }}</th>    
                                             <th>{{ __('system.status') }}</th>    
@@ -61,7 +61,8 @@
                                             <th>{{$data->auther}}</th>    
                                             <th>{{$data->description}}</th>    
                                             <th><img width="200px"src="{{$data->image}}"></th>    
-                                            <th>{{$data->download_link}}</th>    
+                                            <th><a href="{{$data->file}}"><img width="100px"src="{{asset('images\pdf.png')}}"></a></th>    
+   
                                             <th>{{$data->download_count}}</th>    
                                             <th>{{$data->lang}}</th>    
                                            

@@ -37,9 +37,9 @@
             
  
                 @if (isset($data->id))
-                <form class="card" method="POST" action="{{ route('add_silder', $data->id) }}" enctype="multipart/form-data">
+                <form class="card" method="POST" action="{{ route('add_event', $data->id) }}" enctype="multipart/form-data">
                 @else
-                    <form class="card" method="POST" action="{{ route('add_silder') }}" enctype="multipart/form-data">
+                    <form class="card" method="POST" action="{{ route('add_event') }}" enctype="multipart/form-data">
             @endif              
              @csrf
                 <div class="row m-2">
@@ -54,15 +54,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label text-dark"> {{ __('system.mainTitle') }}</label>
+                            <label class="form-label text-dark"> {{ __('system.title') }}</label>
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
                                 <input type="hidden" name="logo" value="{{$data->image}}">
                                 @endif
-                        <input type="text" name="mainTitle" class="form-control" value="@if(isset($data->id)){{ $data->main_title}}@else{{ old('mainTitle') }}@endif"
-                            placeholder="{{ __('system.mainTitle') }}">
+                        <input type="text" name="title" class="form-control" value="@if(isset($data->id)){{ $data->title}}@else{{ old('title') }}@endif"
+                            placeholder="{{ __('system.title') }}">
                             <span id="c_nameArError" class="jsError" role="alert"></span>
-                            @error('mainTitle')
+                            @error('title')
                                 <div class=" text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -70,18 +70,18 @@
 
                     <div class="col-md-12 ">
                         <div class="form-group">
-                            <label class="form-label text-dark"> {{ __('system.subTitle') }}</label>
+                            <label class="form-label text-dark"> {{ __('system.descripe') }}</label>
                            
-                            <input type="text" name="subTitle" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else {{ old('subTitle') }} @endif"
-                            placeholder="{{ __('system.subTitle') }}">
+                            <textarea  name="description" class="form-control" value=""
+                            placeholder="">@if (isset($data->id)) {{ $data->description }} @else {{ old('description') }} @endif</textarea>
                             <span id="c_nameArError" class="jsError" role="alert"></span>
-                            @error('subTitle')
+                            @error('description')
                                 <div class=" text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label text-dark">الصورة الرمزية (اختياري)</label>
+                        <label class="form-label text-dark">الصورة الرمزية </label>
 
                     </div>
 

@@ -60,7 +60,8 @@
 
     <link href="{{asset('/admin/plugins/wysiwyag/richtext.css')}}" rel="stylesheet" />
 
-   
+    <script src="https://cdn.tiny.cloud/1/cr0tbq72bcuaqg3df9zrfanm7t8q6klkt6i3su56t61rpiqh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/lz8yiqd0jl0kv0u8jw9k3pn2vaz6yk14b215xojtpvt31zlr/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 

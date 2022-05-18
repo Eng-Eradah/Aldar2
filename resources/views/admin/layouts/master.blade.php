@@ -7,4 +7,6 @@
     @yield('content')
  </div>
 </div>
+@stack('tiny')
+
 @include('admin.includes.footer')

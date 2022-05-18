@@ -14,12 +14,14 @@ return [
     */
 
     'logo' => 'ALDAR ALARABIA',
+    'manage' => 'Managment',
+
     'law' =>'All Rights Reserved',
     'side.configure' =>' Configure Systems',
     'side.goals' =>' Goals',
     'side.Service' =>' Services',
     'side.web' =>' WebSite Info',
-    'side.lang' =>' language',
+    'side.lang' =>' languages',
     'side.user' =>' Users',
     'side.slider' =>'Slider',
     'active' =>' Enabled',

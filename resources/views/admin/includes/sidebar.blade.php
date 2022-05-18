@@ -11,15 +11,14 @@
 								</a>
 							</div>
 							<div class="user-info">
-								<h2>Rubin Carmody</h2>
-								<span>Web Designer</span>
+								<h2>{{Auth::user()->name}}</h2>
 							</div>
 						</div>
 					</div>
 					<ul class="side-menu">
 					    
 						<li class="slide">
-							<a class="side-menu__item"  href="{{route('configure')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.configure') }}</span></a>
+							<a class="side-menu__item"  href="{{route('configure')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.web') }}</span></a>
 						
 						</li>
 						<li class="slide">
@@ -30,23 +29,48 @@
 							<a class="side-menu__item" href="{{route('service')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.Service') }}</span></a>
 						
 						</li>
+						
 						<li class="slide">
-							<a class="side-menu__item"  href="{{route('configure')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.web') }}</span></a>
+							<a class="side-menu__item"  href="{{route('slider')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.slider') }}</span></a>
 						
 						</li>
 						<li class="slide">
-							<a class="side-menu__item"  href="{{route('slider')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.slider') }}</span></a>
+							<a class="side-menu__item"  href="{{route('category')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الاقسام</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('book')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> المكتبة</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('event')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الفعاليات والاخبار</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('report')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> التقارير</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('job')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الوظائف</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('advertisment')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الاعلانات</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('user')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.user') }}</span></a>
+							
+						</li>
+							
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('donor')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> شركائنا</span></a>
 						
 						</li>
 						<li class="slide">
 							<a class="side-menu__item"  href="{{route('lang')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.lang') }}</span></a>
 						
 						</li>
-						<li class="slide">
-							<a class="side-menu__item"  href="#"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.user') }}</span></a>
-						
-						</li>
-						
 						
 					
 					</ul>

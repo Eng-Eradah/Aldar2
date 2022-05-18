@@ -77,8 +77,9 @@
                                 @if (isset($data->id))
                                     <input type="hidden" name="id" value="{{ $data->id }}">
                                     <input type="hidden" name="logo" value="{{ $data->image }}">
+                                    <input type="hidden" name="oldFile" value="{{ $data->file }}">
                                 @endif
-                            <input type="text" name="title" class="form-control" value="@if(isset($data->id)){{ $data->title }}@else{{ old('title') }}@endif" placeholder="العنوان">
+                                <input type="text" name="title" class="form-control" value="@if (isset($data->id)) {{ $data->title }}@else{{ old('title') }} @endif" placeholder="العنوان">
                                 <span id="c_nameArError" class="jsError" role="alert"></span>
                                 @error('title')
                                     <div class=" text-danger">{{ $message }}</div>
@@ -89,7 +90,7 @@
                             <div class="form-group">
                                 <label class="form-label text-dark"> الكاتب </label>
 
-                            <input type="text" name="auther" class="form-control" value="@if(isset($data->id)){{ $data->auther }}@else{{ old('auther') }}@endif" placeholder="الكاتب ">
+                                <input type="text" name="auther" class="form-control" value="@if (isset($data->id)) {{ $data->auther }}@else{{ old('auther') }} @endif" placeholder="الكاتب ">
                                 <span id="c_nameArError" class="jsError" role="alert"></span>
                                 @error('auther')
                                     <div class=" text-danger">{{ $message }}</div>
@@ -98,13 +99,15 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label class="form-label text-dark"> رابط التحميل</label>
 
-                            <input type="text" name="download_link" class="form-control" value="@if(isset($data->id)){{ $data->download_link }}@else{{ old('download_link') }}@endif" placeholder="رابط التحميل">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-label text-dark"> دار النشر </label>
+
+                                <input type="text" name="publisher" class="form-control" value="@if (isset($data->id)) {{ $data->publisher }}@else{{ old('publisher') }} @endif"
+                                placeholder="الكاتب ">
                                 <span id="c_nameArError" class="jsError" role="alert"></span>
-                                @error('download_link')
+                                @error('publisher')
                                     <div class=" text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -132,108 +135,57 @@
                             @enderror
                         </div>
                     </div>
+                </div>
+               
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-label text-dark">اختيار الملف</label>
+
+                        </div>
+
+
+                        <input type="file" class="dropify" data-default-file="@if (isset($data->file)) {{ $data->file }} @endif"
+                        name="file" data-height="180" accept=".pdf"/>
+
+                        @error('file')
+                            <div class=" text-danger">{{ $message }}</div>
+                        @enderror
+                        <span id="c_imgError" class="jsError" role="alert"></span>
+
+                    </div>
+                
+                <div class="col-6">
+
                     <div class="form-group">
-                        <label class="form-label text-dark">الصورة الرمزية (اختياري)</label>
+                        <label class="form-label text-dark">الصورة الرمزية</label>
 
                     </div>
 
 
-                    <input type="file" class="dropify" data-default-file="@if (isset($data->image)) {{ $data->image }} @endif" name="image" data-height="180"  accept="image/*"/>
+                    <input type="file" class="dropify" data-default-file="@if (isset($data->image)) {{ $data->image }} @endif" name="image"
+                    data-height="180" accept="image/*"/>
 
-
+                    @error('image')
+                        <div class=" text-danger">{{ $message }}</div>
+                    @enderror
                     <span id="c_imgError" class="jsError" role="alert"></span>
 
                 </div>
-                <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
-                </div>
-
-            </div>
-            </form>
-
-
-
+            
         </div>
+
+        <div class="card-footer text-left">
+            <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+        </div>
+
+    </div>
+    </form>
+
+
+
+    </div>
 
     </div>
 
 
 @endsection
-
-
-@push('tiny')
-
-    <script>
-        tinymce.init({
-            selector: '.textarea',
-            language_url: '/public/langs/ar.js',
-            height: "480",
-            language: 'ar',
-            directionality: 'rtl',
-            contextmenu: 'link image table',
-            plugins: 'image advlist lists imagetools code table link emoticons searchreplace ',
-            toolbar: 'undo redo  image  | table | link | emoticons | styleselect | bold italic |  alignleft aligncenter alignright alignjustify  bullist numlist outdent indent forecolor backcolor ',
-            menu: {
-                favs: {
-                    title: 'المفضلة',
-                    items: '   searchreplace | emoticons'
-                }
-            },
-            menubar: 'favs edit view insert format  help',
-            /* enable title field in the Image dialog*/
-            image_title: true,
-            /* enable automatic uploads of images represented by blob or data URIs*/
-            automatic_uploads: true,
-            /*
-              URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-              images_upload_url: 'postAcceptor.php',
-              here we add custom filepicker only to Image dialog
-             */
-            file_picker_types: 'image',
-            /* and here's our custom image picker*/
-            file_picker_callback: function(cb, value, meta) {
-                var input = document.createElement('input');
-                input.setAttribute('type', 'file');
-                input.setAttribute('accept', 'image/*');
-
-                /*
-                  Note: In modern browsers input[type="file"] is functional without
-                  even adding it to the DOM, but that might not be the case in some older
-                  or quirky browsers like IE, so you might want to add it to the DOM
-                  just in case, and visually hide it. And do not forget do remove it
-                  once you do not need it anymore.
-                */
-
-                input.onchange = function() {
-                    var file = this.files[0];
-
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        /*
-                          Note: Now we need to register the blob in TinyMCEs image blob
-                          registry. In the next release this part hopefully won't be
-                          necessary, as we are looking to handle it internally.
-                        */
-                        var id = 'blobid' + (new Date()).getTime();
-                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                        var base64 = reader.result.split(',')[1];
-                        var blobInfo = blobCache.create(id, file, base64);
-                        blobCache.add(blobInfo);
-
-                        /* call the callback and populate the Title field with the file name */
-                        cb(blobInfo.blobUri(), {
-                            title: file.name
-                        });
-                    };
-                    reader.readAsDataURL(file);
-                };
-
-                input.click();
-            },
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        });
-
-    </script>
-
-
-@endpush
