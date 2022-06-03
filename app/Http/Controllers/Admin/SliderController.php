@@ -34,8 +34,9 @@ class SliderController extends Controller
             'mainTitle' => ['required', 'min:5'],
             'subTitle' => ['required','min:10'],
             'image' => ['nullable','image','mimes:jpg,png,jpeg,gif,svg'],
+            'link' => ['nullable','url'],
             'lang' => ['required','exists:langs,lang'],
-
+            
         ]);
         if ($validator->fails()) {
             
@@ -44,6 +45,7 @@ class SliderController extends Controller
         $result=Slaider::updateOrCreate(['id'=>$request->id],[
          'main_title'=>$request->input('mainTitle'),
          'sub_title'=>$request->input('subTitle'),
+         'link'=>$request->input('link'),
          'image' => $request->hasFile('image') ? $this->upload_img($request->file('image')) : ($request->input('logo') ? explode('/', $request->input('logo'))[5] : "default.png"),
          'lang'=>$request->input('lang'),
         ]);

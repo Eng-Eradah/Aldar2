@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Tabs style</h3>
+                        <h3 class="card-title">معلومات النظام</h3>
                     </div>
                     <div class="card-body p-6">
                         <div class="panel panel-primary">
@@ -39,8 +39,8 @@
                                         <br>
                                         <br>
 
-                                        <div class="contect mt-5 d-block">
-                                            <table class="table table-bordered border-top mb-0 table-responsive">
+                                        <div class="contect mt-5 d-block table-responsive">
+                                            <table class="table table-bordered border-top mb-0  w-100">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -57,10 +57,10 @@
 
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <th>{{ $data->description }}</th>
+                                                            <td>@php echo substr($data->description,0,200)@endphp</td>
                                                             <th>{{ $data->lang }}</th>
 
-                                                            <th>
+                                                            <td>
                                                                 @if ($data->is_active == 1)
                                                                     <span
                                                                         class='badge badge-success'>{{ __('system.active') }}</span>
@@ -71,7 +71,7 @@
                                                                 @endif
 
 
-                                                            </th>
+                                                            </td>
 
 
                                                             <th>
@@ -111,8 +111,8 @@
                                         <br>
                                         <br>
 
-                                        <div class="contect mt-5 d-block">
-                                            <table class="table table-bordered border-top mb-0 table-responsive">
+                                        <div class="contect mt-5 d-block table-responsive">
+                                            <table class="table table-bordered border-top mb-0 ">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -129,7 +129,8 @@
 
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <th>{{ $data->description }}</th>
+                                                            <td>@php echo substr($data->description,0,200)@endphp</td>
+
                                                             <th>{{ $data->lang }}</th>
 
                                                             <th>
@@ -184,8 +185,8 @@
                                         <br>
                                         <br>
 
-                                        <div class="contect mt-5 d-block">
-                                            <table class="table table-bordered border-top mb-0 table-responsive">
+                                        <div class="contect mt-5 d-block table-responsive">
+                                            <table class="table table-bordered border-top mb-0  ">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -202,7 +203,8 @@
 
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <th>{{ $data->description }}</th>
+                                                            <td>@php echo substr($data->description,0,200)@endphp</td>
+
                                                             <th>{{ $data->lang }}</th>
 
                                                             <th>
@@ -257,8 +259,8 @@
                                         <br>
                                         <br>
 
-                                        <div class="contect mt-5 d-block">
-                                            <table class="table table-bordered border-top mb-0 table-responsive">
+                                        <div class="contect mt-5 d-block table-responsive">
+                                            <table class="table table-bordered border-top mb-0  ">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -275,7 +277,8 @@
 
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <th>{{ $data->description }}</th>
+                                                            <td>@php echo substr($data->description,0,200)@endphp</td>
+
                                                             <th>{{ $data->lang }}</th>
 
                                                             <th>
@@ -330,8 +333,8 @@
                                         <br>
                                         <br>
 
-                                        <div class="contect mt-5 d-block">
-                                            <table class="table table-bordered border-top mb-0 table-responsive">
+                                        <div class="contect mt-5 d-block table-responsive">
+                                            <table class="table table-bordered border-top mb-0  ">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -348,7 +351,8 @@
 
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <th>{{ $data->description }}</th>
+                                                            <td>@php echo substr($data->description,0,200)@endphp</td>
+
                                                             <th>{{ $data->lang }}</th>
 
                                                             <th>
@@ -403,8 +407,8 @@
                                         <br>
                                         <br>
 
-                                        <div class="contect mt-5 d-block">
-                                            <table class="table table-bordered border-top mb-0 table-responsive">
+                                        <div class="contect mt-5 d-block table-responsive">
+                                            <table class="table table-bordered border-top mb-0  ">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -421,7 +425,8 @@
 
                                                         <tr>
                                                             <td>{{ $data->id }}</td>
-                                                            <th>{{ $data->description }}</th>
+                                                            <td>@php echo substr($data->description,0,200)@endphp</td>
+
                                                             <th>{{ $data->lang }}</th>
 
                                                             <th>

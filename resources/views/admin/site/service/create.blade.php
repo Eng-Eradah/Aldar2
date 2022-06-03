@@ -5,7 +5,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">{{ __('system.add') }} </h4>
+            <h4 class="page-title">إضافة خدمة جديدة </h4>
 
         </div>
         <!-- /Page Header-->
@@ -68,7 +68,7 @@
                         <label class="form-label text-dark">{{ __('system.descripe') }}</label>
                    
                         <textarea type="text" name="descrption" rows="20"
-                            class="form-control textarea">@if(isset($data->id)){{($data->text) }} @else  {{old('descrption')}}@endif</textarea>
+                            class="form-control textarea" id="tinymce">@if(isset($data->id)){{($data->text) }} @else  {{old('descrption')}}@endif</textarea>
 
                         @error('descrption')
                             <div class=" text-danger">{{ $message }}</div>
@@ -88,6 +88,12 @@
 
     </div>
 
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea#tinymce',
+            height: 600
+        });
 
+</script> 
 @endsection
 

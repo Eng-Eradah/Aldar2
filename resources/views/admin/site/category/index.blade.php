@@ -14,7 +14,7 @@
                 <div class="row ">
                     <div class="col-lg-12 col-md-12 col-md-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <div class="text-wrap">
 
                                     <div class="">
@@ -35,7 +35,7 @@
 
                                 </div>
 
-                                <table class="table table-bordered border-top mb-0 table-responsive">
+                                <table class="table table-bordered border-top mb-0  ">
                                     <thead>
                                         <tr class="col-lg-12 col-md-12 col-md-12">
                                             <td>#</td>

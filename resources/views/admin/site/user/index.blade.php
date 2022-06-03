@@ -14,7 +14,7 @@
                 <div class="row ">
                     <div class="col-lg-12 col-md-12 col-md-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <div class="text-wrap">
 
                                     <div class="">
@@ -35,7 +35,7 @@
 
                                 </div>
 
-                                <table class="table table-bordered border-top mb-0 table-responsive ">
+                                <table class="table table-bordered border-top mb-0 ">
                                     <thead>
                                         <tr>
                                             <td>#</td>
@@ -57,7 +57,7 @@
                                             <th><img width="200px"src="{{$data->profile_photo_path}}"></th>    
                                             <th>
                                                 @foreach($data->roles as $role)
-                                                {{$role->name}} 
+                                                {{$role->display_name}} 
                                             @endforeach
                                             </th>    
                                           

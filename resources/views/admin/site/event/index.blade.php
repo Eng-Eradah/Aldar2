@@ -14,7 +14,7 @@
                 <div class="row ">
                     <div class="col-lg-12 col-md-12 col-md-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <div class="text-wrap">
 
                                     <div class="">
@@ -35,7 +35,7 @@
 
                                 </div>
 
-                                <table class="table table-bordered border-top mb-0 table-responsive ">
+                                <table class="table table-bordered border-top mb-0  ">
                                     <thead>
                                         <tr>
                                             <td>#</td>
@@ -55,7 +55,8 @@
                                         <tr>
                                             <td>{{$data->id}}</td>
                                             <th>{{$data->title}}</th>    
-                                            <th>{{$data->description}}</th>    
+                                            <td>@php echo substr($data->description,0,200)@endphp</td>
+
                                             <th><img width="200px"src="{{$data->image}}"></th>    
                                             <th>{{$data->lang}}</th>    
                                            

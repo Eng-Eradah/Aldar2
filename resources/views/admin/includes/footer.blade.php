@@ -69,14 +69,7 @@
  
 
 </script>
-
-<script src='https://cdn.tiny.cloud/1/ol5inlqmowux5zilp0yqczqziy4sj0npgw2ropavdlns1vvp/tinymce/5/tinymce.min.js' referrerpolicy="origin">
-</script>
-<script>
-  tinymce.init({
-    selector: '#mytextarea'
-  });
-</script>
+ 
 <script>
   function changevid(){
       $type=	$('#vidType').val();
@@ -99,5 +92,18 @@
 
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{asset('/admin/dist/aksFileUpload.min.js')}}"></script>
+<script>
+$(function () {
+  $("aks-file-upload").aksFileUpload({
+   
+    dragDrop: true,
+    maxSize: "90 GB",
+    multiple: true,
+    maxFile: 50
+  });
+});
+</script>
 </body>
 </html>

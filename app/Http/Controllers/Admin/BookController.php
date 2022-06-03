@@ -38,12 +38,12 @@ class BookController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'min:5'],
             'description' => ['required', 'min:10'],
-            'image' => ['nullable','image','mimes:jpg,png,jpeg,gif,svg'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg,gif,svg'],
             'lang' => ['required', 'exists:langs,lang'],
+            'date' => ['required', 'date','before_or_equal:Today'],
             'auther' => ['required', 'min:3', 'max:20'],
             'publisher' => ['required', 'min:3', 'max:20'],
-            'file' =>['nullable','mimes:pdf'],
-            'version' => ['nullable'],
+            'file' => ['nullable', 'mimes:pdf'],
             'category_id' => ['required', 'exists:categories,id'],
 
         ]);
@@ -56,9 +56,9 @@ class BookController extends Controller
                 'image' => $request->hasFile('image') ? $this->upload_img($request->file('image')) : ($request->input('logo') ? explode('/', $request->input('logo'))[5] : "default.png"),
                 'lang' => $request->input('lang'),
                 'auther' => $request->input('auther'),
+                'date' => $request->input('date'),
                 'publisher' => $request->input('publisher'),
-                'file' => $request->hasFile('file') ? $this->upload_file($request->file('file'),$request->input('title')) : ($request->input('oldFile') ? explode('/', $request->input('oldFile'))[5] : "default.png"),
-                'version' => $request->input('version') ?? 0,
+                'file' => $request->hasFile('file') ? $this->upload_file($request->file('file'), $request->input('title')) : ($request->input('oldFile') ? explode('/', $request->input('oldFile'))[5] : "default.png"),
                 'category_id' => $request->input('category_id'),
             ]);
             if ($result) {
@@ -86,10 +86,10 @@ class BookController extends Controller
         return Upload::upload($file_img, $path);
 
     }
-    public function upload_file($file_img,$title)
+    public function upload_file($file_img, $title)
     {
         $path = '/images/bookFile/';
-        return Upload::file($file_img, $path,$title);
+        return Upload::file($file_img, $path, $title);
 
     }
 }

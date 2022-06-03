@@ -9,10 +9,10 @@ class Report extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function getFileAttribute($value)
-    {
-        return url('images/report/') . '/' . $value;
-    }
+    // public function getFileAttribute($value)
+    // {
+    //     return url('images/report/') . '/' . $value;
+    // }
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

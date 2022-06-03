@@ -8,5 +8,5 @@
  </div>
 </div>
 @stack('tiny')
-
+@section("scripts")
 @include('admin.includes.footer')

@@ -59,10 +59,11 @@
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{asset('/admin/color-skins/color6.css')}}" />
 
     <link href="{{asset('/admin/plugins/wysiwyag/richtext.css')}}" rel="stylesheet" />
-
-    <script src="https://cdn.tiny.cloud/1/cr0tbq72bcuaqg3df9zrfanm7t8q6klkt6i3su56t61rpiqh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://cdn.tiny.cloud/1/lz8yiqd0jl0kv0u8jw9k3pn2vaz6yk14b215xojtpvt31zlr/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-</head>
+    <script src="{{asset('admin/tinymce/js/tinymce.min.js')}}"></script>
+    <link type="text/css" rel="stylesheet" href="{{asset('/admin/dist/aksFileUpload.min.css')}}">
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+     
+   </head>
 
 
 <body class="app sidebar-mini" @if(isset($user_type)) @if($user_type=='family' || $user_type=='client') onload="initialize()" @endif @endif>

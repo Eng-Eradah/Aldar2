@@ -80,7 +80,7 @@
                                 <select id="inputState" name="role" class="form-control">
                                     @foreach ($role as $roles)
 
-                                        <option value="{{ $roles->id }}">{{ $roles->name }}</option>
+                                        <option value="{{ $roles->id }}">{{ $roles->display_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

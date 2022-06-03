@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+
     <div class="side-app">
 
         <!-- Page Header-->
@@ -83,7 +84,7 @@
                             <label class="form-label text-dark"> التقرير</label>
 
                             <textarea name="report" class="form-control textarea" value=""
-                                placeholder="التقرير">@if (isset($data->id)){{ $data->report }}@else{{ old('report') }}@endif </textarea>
+                                placeholder="التقرير" id="tinymce">@if (isset($data->id)){{ $data->report }}@else{{ old('report') }}@endif </textarea>
                             <span id="c_nameArError" class="jsError" role="alert"></span>
                             @error('report')
                                 <div class=" text-danger">{{ $message }}</div>
@@ -96,9 +97,24 @@
                     </div>
 
 
-                    <input type="file" class="dropify" data-default-file="@if(isset($data->image)){{ $data->image }}@else{{ old('image') }}@endif" name="image" data-height="180"  accept=".pdf"/>
-
-
+                    <aks-file-upload></aks-file-upload>
+                    <div class="aks-file-upload-content testing">
+                        @if (isset($data->id))
+                    
+                            <input type="hidden" value="{{$data->file}}" name="file">
+                        @foreach (json_decode($data->file) as $image)
+                        @php $ext = pathinfo($image, PATHINFO_EXTENSION); 
+                         $allowedExts = array("gif", "jpeg", "jpg", "png");@endphp
+                        @if(in_array($ext, $allowedExts))
+                         <img  class="aks-file-upload-preview " style="height:200px;width:200px" 
+                         src="{{ asset('images/report/'.$image) }}" >
+                         @else
+                         <a href="{{ asset('images/report/'.$image) }}"><img width="100px"src="{{asset('images\pdf.png')}}"></a>
+                          @endif
+                         @endforeach
+                   
+                   @endif
+                </div>
                     <span id="c_imgError" class="jsError" role="alert"></span>
                             @error('image')
                                 <div class=" text-danger">{{ $message }}</div>
@@ -117,6 +133,21 @@
 
     </div>
 
-
+ 
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea#tinymce',
+            height: 600
+        });
+      
+</script> 
+@if(isset($data->id))
+<script>
+      $("aks-file-upload").change(function(){
+          console.log('hhh');
+    $(".testing").html(' ');
+});
+</script>
+@endif
 @endsection
 

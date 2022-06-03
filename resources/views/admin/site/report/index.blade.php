@@ -14,15 +14,13 @@
                 <div class="row ">
                     <div class="col-lg-12 col-md-12 col-md-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <div class="text-wrap">
 
                                     <div class="">
                 
                                         @if(session('error'))
                                         <div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> {{ session('error') }}</div>
-                
-                
                                     @endif
                                     @if(session('success'))
                                     <div class="alert alert-info mb-4" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> {{ session('success') }}</div>
@@ -35,14 +33,14 @@
 
                                 </div>
 
-                                <table class="table table-bordered border-top mb-0 table-responsive ">
+                                <table class="table table-bordered border-top mb-0  ">
                                     <thead>
                                         <tr>
                                             <td>#</td>
                                             <th> {{ __('system.title') }}</th>    
                                             <th> التقرير</th>    
                                             <th>المستخدم</th>    
-                                            <th>الملف</th>    
+                                             
                                             <th>{{ __('system.status') }}</th>    
                                         
                                             <th>{{ __('system.operation') }}</th>    
@@ -55,9 +53,8 @@
                                         <tr>
                                             <td>{{$data->id}}</td>
                                             <th>{{$data->title}}</th>    
-                                            <th>{{$data->report}}</th>    
+                                            <td>@php echo substr($data->report,0,200)@endphp</td>
                                             <th>{{$data->user->name}}</th>    
-                                        <th><a href="{{$data->file}}"><img width="100px"src="{{asset('images\pdf.png')}}"></a></th>    
                                            
                                             <th>
                                                 @if($data->is_active==1)

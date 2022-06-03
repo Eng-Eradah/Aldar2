@@ -27,6 +27,7 @@ return [
     'active' =>' Enabled',
     'notactive' =>' Disenabled',
     'add' =>' Add New',
+    'save' =>' Save',
     'update' =>' Update',
     'title' =>' Title',
     'descripe' =>' Description',

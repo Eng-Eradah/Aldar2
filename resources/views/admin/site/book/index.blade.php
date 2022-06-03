@@ -59,7 +59,7 @@
                                             <td>{{$data->id}}</td>
                                             <th>{{$data->title}}</th>    
                                             <th>{{$data->auther}}</th>    
-                                            <th>{{$data->description}}</th>    
+                                            <td>@php echo substr($data->description,0,200)@endphp</td> 
                                             <th><img width="200px"src="{{$data->image}}"></th>    
                                             <th><a href="{{$data->file}}"><img width="100px"src="{{asset('images\pdf.png')}}"></a></th>    
    

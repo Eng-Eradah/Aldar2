@@ -5,7 +5,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">{{ __('system.add') }} </h4>
+        <h4 class="page-title"> {{$types}}  </h4>
 
         </div>
         <!-- /Page Header-->
@@ -54,15 +54,16 @@
                         <label class="form-label text-dark">{{ __('system.descripe') }}</label>
                    
                         <textarea type="text" name="descrption" rows="20"
-                            class="form-control textarea" id="default">@if(isset($data->id)){{($data->text) }} @else  {{old('descrption')}}@endif</textarea>
+                            class="form-control textarea" id="tinymce">@if(isset($data->id)){{$data->description }} @else  {{old('descrption')}}@endif</textarea>
 
                         @error('descrption')
                             <div class=" text-danger">{{ $message }}</div>
                         @enderror
 
                 </div>
+                
                 <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+                    <input type="submit" name="send" class="btn btn-primary" value="حفظ">
                 </div>
 
             </div>
@@ -73,13 +74,14 @@
         </div>
 
     </div>
-    {{-- <script src="https://cdn.tiny.cloud/1/lz8yiqd0jl0kv0u8jw9k3pn2vaz6yk14b215xojtpvt31zlr/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+    
+        <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea#tinymce',
+            height: 600
+        });
 
-    {{-- <script>
-    tinymce.init({
-  selector: 'textarea#default'
-    }); 
-</script> --}}
+</script> 
 @endsection
 
 

@@ -54,7 +54,8 @@
                                         <tr>
                                             <td>{{$data->id}}</td>
                                             <th>{{$data->title}}</th>    
-                                            <th>{{$data->text}}</th>    
+                                            <td>@php echo substr($data->text,0,200)@endphp</td>
+
                                             <th>{{$data->lang}}</th>    
                                            
                                             <th>

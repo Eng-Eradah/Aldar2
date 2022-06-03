@@ -4,7 +4,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">{{ __('system.add') }} </h4>
+            <h4 class="page-title">إضافة كتاب جديد</h4>
 
         </div>
         <!-- /Page Header-->
@@ -112,13 +112,17 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="" class="col-form-label">إصدارتنا</label>
-                                <input class="form-check-input  mr-2" type="checkbox" id="blankCheckbox" name="version"
-                                    value="1" @if (isset($data->id)) 
-                                    @if ($data->version) checked @endif @endif />
+                                <label class="form-label text-dark"> تاريخ النشر  </label>
 
+                                <input type="date" name="date" class="form-control" value="@if(isset($data->id)){{$data->date}}@else
+                                {{ old('date') }} @endif"
+                                >
+                                <span id="c_nameArError" class="jsError" role="alert"></span>
+                                @error('date')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -128,7 +132,7 @@
                             <label class="form-label text-dark"> {{ __('system.descripe') }}</label>
 
                             <textarea name="description" class="form-control textarea" value=""
-                                placeholder="{{ __('system.description') }}">@if (isset($data->id)){{ $data->description }}@else{{ old('subTitle') }}@endif </textarea>
+                                placeholder="{{ __('system.description') }}" id="tinymce">@if (isset($data->id)){{ $data->description }}@else{{ old('subTitle') }}@endif </textarea>
                             <span id="c_nameArError" class="jsError" role="alert"></span>
                             @error('description')
                                 <div class=" text-danger">{{ $message }}</div>
@@ -175,7 +179,7 @@
         </div>
 
         <div class="card-footer text-left">
-            <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+            <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.save') }}">
         </div>
 
     </div>
@@ -187,5 +191,11 @@
 
     </div>
 
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea#tinymce',
+            height: 600
+        });
 
+</script> 
 @endsection

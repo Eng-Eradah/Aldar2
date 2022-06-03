@@ -5,7 +5,7 @@
 					<div class="app-sidebar__user clearfix">
 						<div class="dropdown user-pro-body">
 							<div>
-								<img src="../assets/images/users/male/25.jpg" alt="user-img" class="avatar avatar-lg brround">
+							<img src="{{Auth::user()->profile_photo_path}}" alt="user-img" class="avatar avatar-lg brround">
 								<a href="editprofile.html" class="profile-img">
 									<span class="fa fa-pencil" aria-hidden="true"></span>
 								</a>
@@ -59,7 +59,7 @@
 						
 						</li>
 						<li class="slide">
-							<a class="side-menu__item"  href="{{route('user')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.user') }}</span></a>
+							<a class="side-menu__item"  href="{{route('user')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الستخدمين</span></a>
 							
 						</li>
 							

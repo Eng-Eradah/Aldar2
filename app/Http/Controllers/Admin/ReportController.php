@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Utilities\Toggle;
 use App\Http\Controllers\Utilities\Upload;
-use App\Models\Lang;
 use App\Models\Report;
 use App\Models\Role;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -17,7 +17,8 @@ class ReportController extends Controller
     //
     public function index()
     {
-        $book = Report::with('user:id,name')->where('lawyer_id',Auth::user()->id)->get();
+
+        $book = Report::with('user:id,name')->where('lawyer_id', Auth::user()->id)->get();
         return view('admin.site.report.index')
             ->with('item', $book);
 
@@ -46,10 +47,22 @@ class ReportController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
+            // dd($request);
+            $path=null;
+            if ($request->hasFile('aksfileupload')) {
+                foreach ($request->file('aksfileupload') as $image) {
+                    $imageName = $image->getClientOriginalName();
+                    $image->move(public_path() . '/images/report/', $imageName);
+                    $fileNames[] = $imageName;
+                }
+                $path = json_encode($fileNames);
+            }
+
+
             $result = Report::updateOrCreate(['id' => $request->id], [
                 'title' => $request->input('title'),
                 'report' => $request->input('report'),
-                'file' => $request->hasFile('image') ? $this->upload_img($request->file('image'),$request->input('title')) : ($request->input('logo') ? explode('/', $request->input('logo'))[5] : "default.png"),
+                'file' =>isset($path)?$path:$request->file,
                 'lawyer_id' => 12,
                 'user_id' => $request->input('user_id'),
             ]);
@@ -72,10 +85,10 @@ class ReportController extends Controller
         return redirect()->back()->with(['error' => 'فشلت العملية يرجى التأكد من صحة البيانات المدخلة']);
 
     }
-    public function upload_img($file_img,$title)
+    public function upload_img($file_img, $title)
     {
         $path = '/images/report/';
-        return Upload::file($file_img, $path,$title);
+        return Upload::file($file_img, $path, $title);
 
     }
 }

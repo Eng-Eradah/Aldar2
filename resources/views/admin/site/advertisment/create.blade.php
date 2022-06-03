@@ -90,7 +90,7 @@
 
                 </div>
                 <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.save') }}">
                 </div>
 
         </div>
@@ -102,5 +102,11 @@
 
     </div>
 
-
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea#tinymce',
+            height: 600
+        });
+    
+    </script> 
 @endsection

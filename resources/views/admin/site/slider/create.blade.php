@@ -80,6 +80,19 @@
                             @enderror
                         </div>
                     </div>
+
+                    <div class="col-md-12 ">
+                        <div class="form-group">
+                            <label class="form-label text-dark">الرابط</label>
+                           
+                            <input type="text" name="link" class="form-control" value="@if (isset($data->id)) {{ $data->link }} @else {{ old('link') }} @endif"
+                            placeholder="الرابط">
+                            <span id="c_nameArError" class="jsError" role="alert"></span>
+                            @error('link')
+                                <div class=" text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="form-label text-dark">الصورة الرمزية (اختياري)</label>
 
@@ -93,7 +106,7 @@
 
                 </div>
                 <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.save') }}">
                 </div>
 
         </div>
