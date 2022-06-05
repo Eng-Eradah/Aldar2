@@ -76,7 +76,7 @@
 
                 </div>
                 <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.save') }}">
                 </div>
 
             </div>

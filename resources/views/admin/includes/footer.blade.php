@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row align-items-center flex-row-reverse">
             <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
-                {{ __('system.law') }}© 2020  <a href="#" class="fs-14 text-black">{{ __('system.logo') }}</a>
+                {{ __('system.law') }}© 2022  <a href="#" class="fs-14 text-black">{{ __('system.logo') }}</a>
             </div>
         </div>
     </div>

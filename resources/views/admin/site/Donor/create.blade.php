@@ -4,7 +4,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">{{ __('system.add') }} </h4>
+            <h4 class="page-title">إدارة الشركاء </h4>
 
         </div>
         <!-- /Page Header-->
@@ -53,7 +53,7 @@
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
                             @endif
-                        <input type="text" name="name" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
+                        <input type="text" name="name" class="form-control" value="@if (isset($data->id)) {{ $data->name }} @else
                             {{ old('name') }} @endif"
                             placeholder="{{ __('system.name') }}">
                             <span id="c_nameArError" class="jsError" role="alert"></span>
@@ -77,7 +77,7 @@
 
                 </div>
                 <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.save') }}">
                 </div>
 
         </div>

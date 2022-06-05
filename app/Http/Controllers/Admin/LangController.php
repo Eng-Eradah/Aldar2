@@ -9,6 +9,9 @@ use App\Models\Category;
 use App\Models\Lang;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Pluralizer;
+
+use App;
 class LangController extends Controller
 {
     //
@@ -41,6 +44,10 @@ class LangController extends Controller
                 'lang' => $request->input('lang'),
             ]);
             if ($result) {
+                // Pluralizer::useLanguage('spanish');
+                // App::setLocale('spanish');
+
+                // Pluralizer::useLanguage($request->input('name'));
                 return redirect()->back()->with(['success' => 'تم العملية  بنجاح   ']);
             }
 

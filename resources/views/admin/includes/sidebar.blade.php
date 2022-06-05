@@ -30,18 +30,18 @@
 						
 						</li>
 						
-						<li class="slide">
-							<a class="side-menu__item"  href="{{route('slider')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.slider') }}</span></a>
 						
-						</li>
+					 
 						<li class="slide">
-							<a class="side-menu__item"  href="{{route('category')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الاقسام</span></a>
-						
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">المكتبة</span><i class="angle fa fa-angle-right"></i></a>
+							<ul class="slide-menu">
+								<li>	<a class="side-menu__item"  href="{{route('category')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الاقسام</span></a></li>
+								<li><a class="side-menu__item"  href="{{route('book')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> المكتبة</span></a>
+								</li>
+							
+							</ul>
 						</li>
-						<li class="slide">
-							<a class="side-menu__item"  href="{{route('book')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> المكتبة</span></a>
-						
-						</li>
+						 
 						<li class="slide">
 							<a class="side-menu__item"  href="{{route('event')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الفعاليات والاخبار</span></a>
 						
@@ -54,10 +54,7 @@
 							<a class="side-menu__item"  href="{{route('job')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الوظائف</span></a>
 						
 						</li>
-						<li class="slide">
-							<a class="side-menu__item"  href="{{route('advertisment')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الاعلانات</span></a>
 						
-						</li>
 						<li class="slide">
 							<a class="side-menu__item"  href="{{route('user')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الستخدمين</span></a>
 							
@@ -65,6 +62,14 @@
 							
 						<li class="slide">
 							<a class="side-menu__item"  href="{{route('donor')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> شركائنا</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('slider')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.slider') }}</span></a>
+						
+						</li>
+						<li class="slide">
+							<a class="side-menu__item"  href="{{route('advertisment')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الاعلانات</span></a>
 						
 						</li>
 						<li class="slide">

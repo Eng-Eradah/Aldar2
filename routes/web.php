@@ -5,15 +5,16 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ConfigureController;
+use App\Http\Controllers\Admin\DonorController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\GoalController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\LangController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\DonorController;
-use App\Http\Controllers\Admin\JobController;
-use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -27,6 +28,16 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/Goal', [HomeController::class, 'goal'])->name('Goal');
+    Route::get('/about', [HomeController::class, 'about'])->name('about');
+    Route::get('/services', [HomeController::class, 'service'])->name('services');
+    Route::get('/events', [HomeController::class, 'event'])->name('events');
+    Route::get('/event/details/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
+    Route::get('/library', [HomeController::class, 'library'])->name('library');
+});
+
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth', 'roles:admin']], function () {
     Route::group(['prefix' => 'admin'], function () {
 
@@ -82,22 +93,22 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('/adddonor/{id?}', [DonorController::class, 'create'])->name('adddonor');
         Route::get('/toggle_donor/{id?}', [DonorController::class, 'toggle'])->name('toggle_donor');
         Route::post('/add_donor', [DonorController::class, 'store'])->name('add_donor');
-//report 
-  //report page
-  Route::get('/report', [ReportController::class, 'index'])->name('report');
-  Route::get('/addreport/{id?}', [ReportController::class, 'create'])->name('addreport');
-  Route::get('/toggle_report/{id?}', [ReportController::class, 'toggle'])->name('toggle_report');
-  Route::post('/add_report', [ReportController::class, 'store'])->name('add_report');
+//report
+        //report page
+        Route::get('/report', [ReportController::class, 'index'])->name('report');
+        Route::get('/addreport/{id?}', [ReportController::class, 'create'])->name('addreport');
+        Route::get('/toggle_report/{id?}', [ReportController::class, 'toggle'])->name('toggle_report');
+        Route::post('/add_report', [ReportController::class, 'store'])->name('add_report');
 //job page
-Route::get('/job', [JobController::class, 'index'])->name('job');
-Route::get('/addjob/{id?}', [JobController::class, 'create'])->name('addjob');
-Route::get('/toggle_job/{id?}', [JobController::class, 'toggle'])->name('toggle_job');
-Route::post('/add_job', [JobController::class, 'store'])->name('add_job');
+        Route::get('/job', [JobController::class, 'index'])->name('job');
+        Route::get('/addjob/{id?}', [JobController::class, 'create'])->name('addjob');
+        Route::get('/toggle_job/{id?}', [JobController::class, 'toggle'])->name('toggle_job');
+        Route::post('/add_job', [JobController::class, 'store'])->name('add_job');
 //event page
-Route::get('/event', [EventController::class, 'index'])->name('event');
-Route::get('/addEvent/{id?}', [EventController::class, 'create'])->name('addEvent');
-Route::get('/toggle_event/{id?}', [EventController::class, 'toggle'])->name('toggle_event');
-Route::post('/add_event', [EventController::class, 'store'])->name('add_event');
+        Route::get('/event', [EventController::class, 'index'])->name('event');
+        Route::get('/addEvent/{id?}', [EventController::class, 'create'])->name('addEvent');
+        Route::get('/toggle_event/{id?}', [EventController::class, 'toggle'])->name('toggle_event');
+        Route::post('/add_event', [EventController::class, 'store'])->name('add_event');
 
     });
 });

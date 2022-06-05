@@ -8,7 +8,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">إضافة عمل </h4>
+            <h4 class="page-title">إضافة وظيفة </h4>
            
         </div>
         <!-- /Page Header-->

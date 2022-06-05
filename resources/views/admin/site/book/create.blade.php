@@ -4,7 +4,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">إضافة كتاب جديد</h4>
+            <h4 class="page-title">إدارة المكتبه</h4>
 
         </div>
         <!-- /Page Header-->

@@ -5,7 +5,7 @@
 
         <!-- Page Header-->
         <div class="page-header">
-            <h4 class="page-title">{{ __('system.add') }} </h4>
+            <h4 class="page-title">إدارة التقارير </h4>
 
         </div>
         <!-- /Page Header-->
@@ -121,7 +121,7 @@
                             @enderror
                 </div>
                 <div class="card-footer text-left">
-                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.add') }}">
+                    <input type="submit" name="send" class="btn btn-primary" value=" {{ __('system.save') }}">
                 </div>
 
             </div>
