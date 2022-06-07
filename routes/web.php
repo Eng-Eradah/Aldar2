@@ -41,6 +41,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/job/details/{id}', [HomeController::class, 'jobDetails'])->name('job.details');
     Route::get('/jobs', [HomeController::class, 'job'])->name('jobs');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/send_contact', [HomeController::class, 'saveContact'])->name('send_contact');
     
 });
 

@@ -10,6 +10,8 @@ use App\Models\Goal;
 use App\Models\Job;
 use App\Models\Service;
 use Illuminate\Support\Facades\App;
+use App\Mail\ContactMail;
+use Mail;
 
 class HomeController extends BaseController
 {
@@ -38,7 +40,7 @@ class HomeController extends BaseController
     public function goal()
     {
         $locale = App::currentLocale();
-        $goal = Goal::where(['is_active' => 1, 'lang' => $locale])->paginate(9);
+        $goal = Goal::where(['is_active' => 1, 'lang' => $locale])->paginate(3);
 
         return view('front.site.goal')->with(['goals' => $goal]);
     }
@@ -121,5 +123,20 @@ class HomeController extends BaseController
 
     public function contact(){
         return view('front.site.contact');
+    }
+
+    public function saveContact(Request $request)
+    {
+
+        $details = [
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "subject" => $request->subject,
+            "message" => $request->message,
+        ];
+        Mail::to("contact@cvyemen.com")->send(new ContactMail($details));
+        return redirect()->back()->with(['success' => __('website.sendEmail')]);
+
     }
 }

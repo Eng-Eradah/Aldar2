@@ -21,7 +21,7 @@
                     </div>
                     <div class="row">
                         <!--Services Three Single Start-->
- 
+
                         @foreach ($Service as $service)
                             <div class="col-xl-3 col-lg-4 col-md-6 mb-5 wow fadeInUp animated mb-5" data-wow-delay="100ms"
                                 style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;margin-bottun:10px">
@@ -53,10 +53,11 @@
                     <div class="col-xl-12  ">
                         <div class="error-page__inner ">
                             <div class="error-page__title-box">
-                                <img src="{{ asset('/images/error/404.jpg') }}" width="600px" >
+                                <img src="{{ asset('/images/error/404.jpg') }}" width="600px">
                                 <br>
-                                <a href="{{ route('home') }}" class="thm-btn error-page__btn mt-5">{{ __('website.home') }}</a>
-                             </div>
+                                <a href="{{ route('home') }}"
+                                    class="thm-btn error-page__btn mt-5">{{ __('website.home') }}</a>
+                            </div>
 
                         </div>
                     </div>

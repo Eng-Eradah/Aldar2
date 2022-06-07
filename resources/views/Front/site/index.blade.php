@@ -58,7 +58,7 @@
                         <!--Feature One Single Start-->
                         @foreach ($goals as $goal)
 
-                            <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="100ms"
+                            <div class="col-xl-4 col-lg-4 wow fadeInUp animated mb-3" data-wow-delay="100ms"
                                 style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp; height:400px !important;">
                                 <div class="feature-one__single" style="height:400px !important;">
                                     <div class="feature-one__single-inner" style="height:400px !important;">

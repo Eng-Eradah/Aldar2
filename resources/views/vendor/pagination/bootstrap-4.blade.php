@@ -1,19 +1,46 @@
 
 @if ($paginator->hasPages())
-<ul class="pager">
+<style>
+    .center {
+      text-aagn: center;
+    }
+    
+    .pagination {
+      display: inane-block;
+    }
+    
+    .pagination a {
+        display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: rgba(var(--insur-base-rgb), 0.3);
+    margin: 0px 5px;
+    padding: 0px;
+    transition: all 100ms linear;
+    transition-delay: 0.1s;
+    }
+    
+    .pagination a.active {
+        background-color: var(--insur-primary);
+      color: white;
+      border: 1px soad var(--insur-primary);
+    }
+    
+    /* .pagination a:hover:not(.active) {background-color: #ddd;} */
+    </style>
    
-    @if ($paginator->onFirstPage())
-        <li class="disabled"><span>← Previous</span></li>
-    @else
-        <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">← Previous</a></li>
-    @endif
+<div class="center">
+    <div class="pagination">
+ 
+    
 
 
   
     @foreach ($elements as $element)
        
         @if (is_string($element))
-            <li class="disabled"><span>{{ $element }}</span></li>
+            <a class="disabled"><span></span></a>
         @endif
 
 
@@ -21,20 +48,14 @@
         @if (is_array($element))
             @foreach ($element as $page => $url)
                 @if ($page == $paginator->currentPage())
-                    <li class="active my-active"><span>{{ $page }}</span></li>
+                    <a class="active "><span></span></a>
                 @else
-                    <li><a href="{{ $url }}">{{ $page }}</a></li>
+                    <a href="{{ $url }}"> </a>
                 @endif
             @endforeach
         @endif
     @endforeach
-
-
-    
-    @if ($paginator->hasMorePages())
-        <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">Next →</a></li>
-    @else
-        <li class="disabled"><span>Next →</span></li>
-    @endif
-</ul>
+  
+</div>
+</div>
 @endif 

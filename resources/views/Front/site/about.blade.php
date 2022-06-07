@@ -1,6 +1,6 @@
 @extends('front.layouts.master')
 @section('content')
-  
+
 
     <!--About Three Start-->
     @if ($config->count() > 0)
@@ -46,10 +46,11 @@
                     <div class="col-xl-12  ">
                         <div class="error-page__inner ">
                             <div class="error-page__title-box">
-                                <img src="{{ asset('/images/error/404.jpg') }}" width="600px" >
-                            <br>
-                            <a href="{{ route('home') }}" class="thm-btn error-page__btn mt-5">{{ __('website.home') }}</a>
-                         </div>
+                                <img src="{{ asset('/images/error/404.jpg') }}" width="600px">
+                                <br>
+                                <a href="{{ route('home') }}"
+                                    class="thm-btn error-page__btn mt-5">{{ __('website.home') }}</a>
+                            </div>
 
                         </div>
                     </div>

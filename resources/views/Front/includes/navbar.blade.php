@@ -22,7 +22,7 @@
                                     <span class="icon-email"></span>
                                 </i>
                                 <div class="text">
-                                    <p><a href="Aldar.Alarabia@gmail.com">Aldar.Alarabia@gmail.com</a></p>
+                                    <p><a >Aldar.Alarabia@gmail.com</a></p>
                                 </div>
                             </li>
                         </ul>

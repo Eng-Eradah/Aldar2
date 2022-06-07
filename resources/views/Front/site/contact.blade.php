@@ -1,6 +1,29 @@
 @extends('front.layouts.master')
 @section('content')
 <section class="contact-page">
+    <div class="text-wrap">
+
+        <div class="">
+
+            @if (session('error'))
+                <div class="alert alert-danger text-right" role="alert"><button type="button" class="close"
+                        data-dismiss="alert" aria-hidden="true">×</button>
+                    {{ session('error') }}</div>
+
+
+            @endif
+            @if (session('success'))
+                <div class="alert alert-info mb-4 text-right" role="alert"><button type="button" class="close"
+                        data-dismiss="alert" aria-hidden="true">×</button>
+                    {{ session('success') }}</div>
+
+            @endif
+
+
+
+        </div>
+
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-lg-5">
@@ -24,7 +47,8 @@
             <div class="col-xl-8 col-lg-7">
                 <div class="contact-page__right">
                     <div class="contact-page__form">
-                        <form action="https://layerdrops.com/assets/inc/sendemail.php" class="comment-one__form contact-form-validated" novalidate="novalidate">
+                        <form action="{{route('send_contact')}}"  class="comment-one__form contact-form-validated" novalidate="novalidate">
+                        @csrf
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="comment-form__input-box">

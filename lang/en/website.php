@@ -53,5 +53,6 @@ return [
     'subject'=>'Subject',
     'message'=>' Write a message ',
     'send'=>' Send',
+    'sendEmail'=>'Email Send Succefully',
 
 ];
