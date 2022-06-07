@@ -4331,6 +4331,7 @@ ul {
 
 .testimonial-one__single:hover {
   transform: translateY(-10px);
+
 }
 
 .testimonial-one__single-inner {
@@ -4340,6 +4341,7 @@ ul {
   padding: 65px 60px 55px;
   border-radius: 20px;
   background-color: var(--insur-white);
+  height:500px;
 }
 
 .testimonial-one__shape-1 {
@@ -4364,17 +4366,17 @@ ul {
 
 .testimonial-one__client-info {
   position: relative;
-  display: flex;
+  display: grid;
   align-items: center;
   margin-left: 5px;
   margin-bottom: 26px;
+  grid-template-columns: 1fr;
 }
 
 .testimonial-one__client-img-box {
   position: relative;
   display: block;
   width: 100%;
-  max-width: 115px;
   z-index: 1;
 }
 

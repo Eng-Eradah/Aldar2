@@ -1,21 +1,16 @@
    <!--Site Footer Start-->
    <footer class="site-footer">
-    <div class="site-footer-bg"
-        style="background-image: url({{ asset('/front/images/backgrounds/site-footer-bg.png') }});">
+    <div class="site-footer-bg" style="background-image: url(assets/images/backgrounds/site-footer-bg.png);">
     </div>
     <div class="container">
         <div class="site-footer__top">
             <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <div class="footer-widget__logo">
-                            <a href="index.html"><img   height="150px"src="{{ asset('/front/images/resources/footer-logo.png') }}"
-                                    alt=""></a>
+                            <a href="index.html"><img src="{{asset('/front/images/resources/footer-logo.png')}}" width="200px" alt=""></a>
                         </div>
-                        <div class="footer-widget__about-text-box">
-                            <p class="footer-widget__about-text">Hadda street, in front of Authority Of General Investment
-                                Sana'a, Yemen</p>
-                        </div>
+                         
                         <div class="site-footer__social">
                             <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -24,71 +19,99 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                     <div class="footer-widget__column footer-widget__contact clearfix">
-                        <h3 class="footer-widget__title mr-4" style="
-                        margin-right: 100px;
-                    ">{{__('website.content')}}</h3>
-                       
-                         <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp">
-                            <ul class="footer-widget__contact-list list-unstyled clearfix">
-                                
-                                <li>
-                                   
-                                 <div class="text">
-                                     <p><a href="{{route('services')}}">{{__('website.service')}}</a></p>
-                                 </div>
-                             </li>
-                             <li>
-                                   
-                                 <div class="text">
-                                     <p><a href="{{route('events')}}">{{__('website.event')}}</a></p>
-                                 </div>
-                             </li>
-                             <li>
-                                   
-                                 <div class="text">
-                                     <p><a href="{{route('library')}}">{{__('website.book')}}</a></p>
-                                 </div>
-                             </li>
-                            </ul>
-                         </div>
-                         <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp">
-                            <ul class="footer-widget__contact-list list-unstyled clearfix">
-                                <li>
-                                   
-                                    <div class="text">
-                                        <p><a href="{{route('home')}}">{{__('website.home')}}</a></p>
-                                    </div>
-                                </li>
-                                <li>
-                                   
-                                 <div class="text">
-                                     <p><a href="{{route('about')}}">{{__('website.About')}}</a></p>
-                                 </div>
-                             </li>
-                             
-                             <li>
-                                   
-                                 <div class="text">
-                                     <p><a href="{{route('Goal')}}">{{__('website.goal')}}</a></p>
-                                 </div>
-                             </li>
-                            </ul>
+                        <h3 class="footer-widget__title">{{__('website.contact')}}</h3>
+                        <ul class="footer-widget__contact-list list-unstyled clearfix">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-email"></span>
+                                </div>
+                                <div class="text">
+                                    <p><a href="Aldar.Alarabia@gmail.com">Aldar.Alarabia@gmail.com</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-pin"></span>
+                                </div>
+                                <div class="text">
+                                    <p>{{__('website.address')}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="footer-widget__open-hour">
+                            <h3 class="footer-widget__open-hour-title">{{__('website.open_hour')}}</h3>
+                            <h3 class="footer-widget__open-hour-text">Mon – Sat: 8:00 am to 6:00 pm Sunday:
+                                Closed</h3>
                         </div>
                     </div>
                 </div>
-                 
-                 
+              
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="footer-widget__column footer-widget__newsletter">
+                        <h3 class="footer-widget__title">{{__('website.content')}}</h3>
+                        
+                        <div class="footer-widget__phone">
+                            <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp">
+                                <ul class="footer-widget__contact-list list-unstyled clearfix">
+                                    <li>
+                                       
+                                        <div class="text">
+                                            <p><a href="{{route('home')}}">{{__('website.home')}}</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                       
+                                     <div class="text">
+                                         <p><a href="{{route('about')}}">{{__('website.About')}}</a></p>
+                                     </div>
+                                 </li>
+                                 
+                                 <li>
+                                       
+                                     <div class="text">
+                                         <p><a href="{{route('Goal')}}">{{__('website.goal')}}</a></p>
+                                     </div>
+                                 </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp">
+                                <ul class="footer-widget__contact-list list-unstyled clearfix">
+                                    
+                                    <li>
+                                       
+                                     <div class="text">
+                                         <p><a href="{{route('services')}}">{{__('website.service')}}</a></p>
+                                     </div>
+                                 </li>
+                                 <li>
+                                       
+                                     <div class="text">
+                                         <p><a href="{{route('events')}}">{{__('website.event')}}</a></p>
+                                     </div>
+                                 </li>
+                                 <li>
+                                       
+                                     <div class="text">
+                                         <p><a href="{{route('library')}}">{{__('website.book')}}</a></p>
+                                     </div>
+                                 </li>
+                                </ul>
+                             </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="site-footer__bottom">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="site-footer__bottom-inner">
-                     <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
-                         {{ __('system.law') }}© 2022  <a href="#" class="fs-14 text-black">{{ __('system.logo') }}</a>
-                     </div>
+                        <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
+                            {{ __('system.law') }}© 2022  <a href="#" class="fs-14 text-black">{{ __('system.logo') }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,16 +138,7 @@
         <div class="mobile-nav__container"></div>
         <!-- /.mobile-nav__container -->
 
-         
-        <div class="mobile-nav__top">
-            <div class="mobile-nav__social">
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-facebook-square"></a>
-                <a href="#" class="fab fa-pinterest-p"></a>
-                <a href="#" class="fab fa-instagram"></a>
-            </div><!-- /.mobile-nav__social -->
-        </div><!-- /.mobile-nav__top -->
-
+        
 
 
     </div>

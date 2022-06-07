@@ -35,7 +35,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/services', [HomeController::class, 'service'])->name('services');
     Route::get('/events', [HomeController::class, 'event'])->name('events');
     Route::get('/event/details/{id}', [HomeController::class, 'eventDetails'])->name('event.details');
-    Route::get('/library', [HomeController::class, 'library'])->name('library');
+    Route::get('/book/details/{id}', [HomeController::class, 'bookDetails'])->name('book.details');
+    Route::get('/library/{id?}', [HomeController::class, 'library'])->name('library');
+    Route::get('/download/{id?}', [HomeController::class, 'download'])->name('download');
+    Route::get('/job/details/{id}', [HomeController::class, 'jobDetails'])->name('job.details');
+    Route::get('/jobs', [HomeController::class, 'job'])->name('jobs');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    
 });
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth', 'roles:admin']], function () {
