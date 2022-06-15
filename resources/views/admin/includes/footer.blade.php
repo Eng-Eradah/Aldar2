@@ -18,6 +18,19 @@
 <!-- JQuery js-->
 <script src="{{asset('admin/js/jquery-3.2.1.min.js')}}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{asset('/admin/dist/aksFileUpload.min.js')}}"></script>
+<script>
+$(function () {
+  $("aks-file-upload").aksFileUpload({
+   
+    dragDrop: true,
+    maxSize: "90 GB",
+    multiple: true,
+    maxFile: 50
+  });
+});
+</script>
 <!-- Bootstrap js -->
 <script src="{{asset('admin/plugins/bootstrap-4.3.1/js/popper.min.js')}}"></script>
 <script src="{{asset('admin/plugins/bootstrap-4.3.1/js/bootstrap.min.js')}}"></script>
@@ -92,18 +105,5 @@
 
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{asset('/admin/dist/aksFileUpload.min.js')}}"></script>
-<script>
-$(function () {
-  $("aks-file-upload").aksFileUpload({
-   
-    dragDrop: true,
-    maxSize: "90 GB",
-    multiple: true,
-    maxFile: 50
-  });
-});
-</script>
 </body>
 </html>

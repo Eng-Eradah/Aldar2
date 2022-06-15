@@ -1832,7 +1832,7 @@ ul {
   display: block;
   float: left;
   padding: 41px 0;
-  padding-right: 170px;
+  padding-right: 17px;
 }
 
 .main-menu-three__main-menu-box {
@@ -12225,4 +12225,10 @@ body.boxed-wrapper {
   body.boxed-wrapper .get-insurance__left {
     left: 120px;
   }
+}
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }

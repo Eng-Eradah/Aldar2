@@ -49,7 +49,7 @@
                     <div class="main-menu-three__wrapper-inner clearfix">
                         <div class="main-menu-three__left">
                             <div class="main-menu-three__logo">
-                                <a href="index.html"><img src="assets/images/resources/logo-1.png" alt=""></a>
+                                <a class="navbar-brand" href="{{route('home')}}" style="color: #015EAC;">{{__('website.aldar')}} <span class="logo-dec" style="color: #be892d;">{{__('website.arabic')}}</span></a>
                             </div>
                             <div class="main-menu-three__main-menu-box">
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
@@ -59,7 +59,7 @@
                                         
                                     </li>
                                     <li class="">
-                                        <a href="{{route('about')}}">{{__('website.About')}}</a>
+                                        <a href="{{route('about')}}">{{__('website.About2')}}</a>
                                          
                                     </li>
                                     <li class="">
@@ -133,110 +133,4 @@
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
     </div><!-- /.stricky-header -->
   <!--Main Slider Start-->
-  @if($Sliders->count()>0)
-  <section class="main-slider-three clearfix">
-      <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
-                                  "effect": "fade",
-                                  "pagination": {
-                                  "el": "#main-slider-pagination",
-                                  "type": "bullets",
-                                  "clickable": true
-                                  },
-                                  "navigation": {
-                                  "nextEl": "#main-slider__swiper-button-next",
-                                  "prevEl": "#main-slider__swiper-button-prev"
-                                  },
-                                  "autoplay": {
-                                  "delay": 50000000
-                                  }}'>
-          <div class="swiper-wrapper" style="height: 500px;">
-              @foreach ($Sliders as $slider)
-                  <div class="swiper-slide">
-                      <div class="image-layer-three" style="background-image: url({{ $slider->image }});">
-                      </div>
-                      <!-- /.image-layer -->
-
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-xl-12">
-                                  <div class="main-slider-three__content">
-                                      <h2 class="main-slider-three__title">{{ $slider->main_title }}</h2>
-                                      <p class="main-slider-three__text">{{ $slider->sub_title }}</p>
-                                      <div class="main-slider-three__btn-box">
-                                          <a href="{{ $slider->link }}" class="thm-btn main-slider-three__btn">
-                                              {{ __('website.Show More') }}</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              @endforeach
-
-          </div>
-
-          <!-- If we need navigation buttons -->
-          <div class="main-slider-three__nav">
-              <div class="swiper-button-prev" id="main-slider__swiper-button-next">
-                  <i class="icon-right-arrow"></i>
-              </div>
-              <div class="swiper-button-next" id="main-slider__swiper-button-prev">
-                  <i class="icon-right-arrow1"></i>
-              </div>
-          </div>
-
-      </div>
-  </section>
-  <!--Main Slider End-->
-  @else
-  <section class="main-slider-three clearfix">
-      <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
-                                  "effect": "fade",
-                                  "pagination": {
-                                  "el": "#main-slider-pagination",
-                                  "type": "bullets",
-                                  "clickable": true
-                                  },
-                                  "navigation": {
-                                  "nextEl": "#main-slider__swiper-button-next",
-                                  "prevEl": "#main-slider__swiper-button-prev"
-                                  },
-                                  "autoplay": {
-                                  "delay": 50000000
-                                  }}'>
-          <div class="swiper-wrapper" style="height: 500px;">
-                  <div class="swiper-slide">
-                      <div class="image-layer-three" style="background-image: url({{asset('/front/images/resource/logo-2.png')}});">
-                      </div>
-                      <!-- /.image-layer -->
-
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-xl-12">
-                                  <div class="main-slider-three__content">
-                                      <h2 class="main-slider-three__title">{{__('system.logo')}}</h2>
-                                      <div class="main-slider-three__btn-box">
-                                          <a href="{{route('home')}}" class="thm-btn main-slider-three__btn">
-                                              {{ __('website.Show More') }}</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-          </div>
-
-          <!-- If we need navigation buttons -->
-          <div class="main-slider-three__nav">
-              <div class="swiper-button-prev" id="main-slider__swiper-button-next">
-                  <i class="icon-right-arrow"></i>
-              </div>
-              <div class="swiper-button-next" id="main-slider__swiper-button-prev">
-                  <i class="icon-right-arrow1"></i>
-              </div>
-          </div>
-
-      </div>
-  </section>
-@endif
+ 

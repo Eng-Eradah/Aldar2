@@ -16,7 +16,7 @@ return [
     'logo' => 'ALDAR ALARABIA',
     'aldar' => 'ALDAR ',
     'arabic' => 'ALARABIA ',
-    'About' => 'About Us',
+    'About2' => 'About Us',
     'service' => ' Our Service',
     'goal' => ' Our Goals ',
     'donor' => ' Our Donor ',

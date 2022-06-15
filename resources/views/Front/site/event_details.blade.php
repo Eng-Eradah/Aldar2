@@ -2,7 +2,22 @@
 @section('content')
 
 
-    @if ($event->id > 0)
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({{asset('/front/images/backgrounds/site-footer-bg.png')}})">
+    </div>
+    <div class="page-header-shape-1"><img src="{{asset('/front/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{{route('home')}}">{{__('website.home')}}</a></li>
+                <li><span>/</span></li>
+                <li>{{__('website.event')}}</li>
+            </ul>
+            <h2>{{__('website.event')}}</h2>
+        </div>
+    </div>
+</section>
+    @if ($event)
         <!--News Details Start-->
         <section class="news-details">
             <div class="container">

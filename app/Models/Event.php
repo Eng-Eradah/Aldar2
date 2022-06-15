@@ -13,4 +13,13 @@ class Event extends Model
     {
         return url('images/event/') . '/' . $value;
     }
+    protected $appends=[
+        'text'
+      ];
+  
+      public function gettextAttribute()
+  {
+  return \Illuminate\Support\Str::words(html_entity_decode(strip_tags($this->description)), 20);
+  
+  }
 }

@@ -60,9 +60,9 @@
                         @enderror
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
+                <div class="row col-12">
+                    <div class="col-6">
+                        <div class="form-group col-12">
                             <label class="form-label text-dark"> تاريخ البدء</label>
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
@@ -74,8 +74,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
+                    <div class="col-6">
+                        <div class="form-group col-12">
                             <label class="form-label text-dark"> تاريخ الانتهاء </label>
 
                             <input  class="form-control" value="@if(isset($data->id)){{$data->end_date}}@else {{ old('end_date') }} @endif" name="end_date" type="date">

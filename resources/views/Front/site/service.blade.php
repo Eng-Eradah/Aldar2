@@ -1,24 +1,39 @@
 @extends('front.layouts.master')
 @section('content')
 
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({{asset('/front/images/backgrounds/benefits-bg-2.jpg')}})">
+    </div>
+    <div class="page-header-shape-1"><img src="{{asset('/front/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{{route('home')}}">{{__('website.home')}}</a></li>
+                <li><span>/</span></li>
+                <li>{{__('website.service')}}</li>
+            </ul>
+            <h2>{{__('website.service')}}</h2>
+        </div>
+    </div>
+</section>
 
-    @if ($Service->count() > 0)
+    @if ($Service)
         <!--Services Three Start-->
         <section class="services-three mt-5">
             <div class="container">
-                <div class="services-three__inner">
-
-                    <div class="section-title text-left mb-3">
-                        <div class="section-sub-title-box">
-                            <p class="section-sub-title">{{ __('website.service') }}</p>
-                            <div class="section-title-shape-1">
-                                <img src="{{ asset('/front/images/shapes/section-title-shape-1.png') }}" alt="">
-                            </div>
-                            <div class="section-title-shape-2">
-                                <img src="{{ asset('/front/images/shapes/section-title-shape-2.png') }}" alt="">
-                            </div>
+                <div class="section-title text-right mb-3">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">{{ __('website.service') }}</p>
+                        <div class="section-title-shape-1">
+                            <img src="{{ asset('/front/images/shapes/section-title-shape-1.png') }}" alt="">
+                        </div>
+                        <div class="section-title-shape-2">
+                            <img src="{{ asset('/front/images/shapes/section-title-shape-2.png') }}" alt="">
                         </div>
                     </div>
+                </div>
+                <div class="services-three__inner">
+
                     <div class="row">
                         <!--Services Three Single Start-->
 
@@ -41,7 +56,7 @@
                 </div>
             </div>
         </section>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-3" >
             {!! $Service->links() !!}
         </div>
     @else

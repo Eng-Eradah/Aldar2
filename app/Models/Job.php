@@ -17,4 +17,14 @@ class Job extends Model
 
     ];
 
+    protected $appends=[
+      'text'
+    ];
+
+    public function gettextAttribute()
+{
+return \Illuminate\Support\Str::words(html_entity_decode(strip_tags($this->requirment)), 20);
+
+}
+
 }

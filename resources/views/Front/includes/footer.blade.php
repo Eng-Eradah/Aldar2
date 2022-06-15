@@ -5,7 +5,7 @@
     <div class="container">
         <div class="site-footer__top">
             <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <div class="footer-widget__logo">
                             <a href="index.html"><img src="{{asset('/front/images/resources/footer-logo.png')}}" width="200px" alt=""></a>
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="200ms">
                     <div class="footer-widget__column footer-widget__contact clearfix">
                         <h3 class="footer-widget__title">{{__('website.contact')}}</h3>
                         <ul class="footer-widget__contact-list list-unstyled clearfix">
@@ -48,12 +48,12 @@
                     </div>
                 </div>
               
-                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                <div class="col-xl-4 col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="400ms">
                     <div class="footer-widget__column footer-widget__newsletter">
                         <h3 class="footer-widget__title">{{__('website.content')}}</h3>
                         
                         <div class="footer-widget__phone">
-                            <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp">
+                            <div class="col-xl-5 col-lg-5 col-md-5 wow fadeInUp">
                                 <ul class="footer-widget__contact-list list-unstyled clearfix">
                                     <li>
                                        
@@ -64,7 +64,7 @@
                                     <li>
                                        
                                      <div class="text">
-                                         <p><a href="{{route('about')}}">{{__('website.About')}}</a></p>
+                                         <p><a href="{{route('about')}}">{{__('website.About2')}}</a></p>
                                      </div>
                                  </li>
                                  
@@ -76,7 +76,7 @@
                                  </li>
                                 </ul>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp">
+                            <div class="col-xl-5 col-lg-5 col-md-5 wow fadeInUp">
                                 <ul class="footer-widget__contact-list list-unstyled clearfix">
                                     
                                     <li>

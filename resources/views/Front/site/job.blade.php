@@ -2,7 +2,22 @@
 @section('content')
 
 
-    @if ($item->count() > 0)
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({{asset('/front/images/backgrounds/benefits-bg-2.jpg')}})">
+    </div>
+    <div class="page-header-shape-1"><img src="{{asset('/front/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{{route('home')}}">{{__('website.home')}}</a></li>
+                <li><span>/</span></li>
+                <li>{{__('website.job')}}</li>
+            </ul>
+            <h2>{{__('website.job')}}</h2>
+        </div>
+    </div>
+</section>
+    @if ($item)
         <!--pricing Start-->
         <section class="pricing">
             <div class="container">
@@ -36,7 +51,7 @@
                                                     </div>
                                                     <div class="pricing__single-top" style="width:100%">
                                                         <div class="pricing__img" style="width:100%">
-                                                            <img src="{{ asset('/front/images/resources/pricing-img-2.png') }}"
+                                                            <img src="{{ asset('/front/images/resources/job.jpg') }}"
                                                                 style="width:100%" alt="">
                                                         </div>
 
@@ -48,14 +63,14 @@
                                                         <p style="display: inline; "><i class="far fa-calendar "
                                                                 style="margin-left: 20px"></i>{{ $data->end_date }}</p>
                                                     </div>
-                                                    <div class="pricing__single-bottom">
+                                                     
+                                                    <div class="pricing__single-bottom" >
                                                         <h3 class="pricing__title">{{ $data->title }}</h3>
-                                                        <div class="list-unstyled pricing__points">
-                                                            @php echo substr($data->requirment,0,300)@endphp
-                                                        </div>
+                                                        <div class="list-unstyled pricing__points line-clamp"  >
+                                                            {{$data->text}}
+                                                            </div>
                                                         <div class="pricing__btn-box">
-                                                            <a href="{{ route('event.details', $data->id) }}"
-                                                                class="thm-btn pricing__btn">{{ __('website.apply') }}</a>
+                                                            
                                                             <a href="{{ route('job.details', $data->id) }}"
                                                                 class="thm-btn pricing__btn">{{ __('website.details') }}</a>
                                                         </div>
@@ -74,7 +89,7 @@
             </div>
         </section>
         <!--pricing End-->
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-3">
             {!! $item->links() !!}
         </div>
     @else

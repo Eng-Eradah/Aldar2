@@ -2,7 +2,22 @@
 @section('content')
 
 
-    @if ($item->id > 0)
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({{asset('/front/images/backgrounds/benefits-bg-2.jpg')}})">
+    </div>
+    <div class="page-header-shape-1"><img src="{{asset('/front/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{{route('home')}}">{{__('website.home')}}</a></li>
+                <li><span>/</span></li>
+                <li>{{__('website.job')}}</li>
+            </ul>
+            <h2>{{__('website.job')}}</h2>
+        </div>
+    </div>
+</section>
+    @if ($item)
         <!--News Details Start-->
         <section class="news-details">
             <div class="container">

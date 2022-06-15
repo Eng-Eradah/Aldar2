@@ -38,11 +38,11 @@ class BookController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => ['required', 'min:5'],
             'description' => ['required', 'min:10'],
-            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg,gif,svg'],
+            'image' => ['nullable', 'image'],
             'lang' => ['required', 'exists:langs,lang'],
             'date' => ['required', 'date','before_or_equal:Today'],
             'auther' => ['required', 'min:3', 'max:20'],
-            'publisher' => ['required', 'min:3', 'max:20'],
+            'publisher' => ['required', 'min:3'],
             'file' => ['nullable', 'mimes:pdf'],
             'category_id' => ['required', 'exists:categories,id'],
 

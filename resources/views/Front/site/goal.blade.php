@@ -1,6 +1,21 @@
 @extends('front.layouts.master')
 @section('content')
 
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({{asset('/front/images/backgrounds/benefits-bg-2.jpg')}})">
+    </div>
+    <div class="page-header-shape-1"><img src="{{asset('/front/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{{route('home')}}">{{__('website.home')}}</a></li>
+                <li><span>/</span></li>
+                <li>{{__('website.goal')}}</li>
+            </ul>
+            <h2>{{__('website.goal')}}</h2>
+        </div>
+    </div>
+</section>
 
     @if ($goals->count() > 0)
         <!--Goal Three End-->
@@ -8,7 +23,7 @@
             <div class="container">
                 <div class="feature-one__inner">
 
-                    <div class="section-title text-left">
+                    <div class="section-title text-right">
                         <div class="section-sub-title-box">
                             <p class="section-sub-title">{{ __('website.goal') }}</p>
                             <div class="section-title-shape-1">
@@ -45,7 +60,7 @@
                 </div>
             </div>
         </section>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-3">
             {!! $goals->links() !!}
         </div>
     @else

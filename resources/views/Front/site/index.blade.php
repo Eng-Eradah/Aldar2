@@ -1,18 +1,135 @@
 @extends('front.layouts.master')
 @section('content')
+@if($Sliders->count()>0)
+<section class="main-slider-three clearfix">
+    <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                                "effect": "fade",
+                                "pagination": {
+                                "el": "#main-slider-pagination",
+                                "type": "bullets",
+                                "clickable": true
+                                },
+                                "navigation": {
+                                "nextEl": "#main-slider__swiper-button-next",
+                                "prevEl": "#main-slider__swiper-button-prev"
+                                },
+                                "autoplay": {
+                                "delay": 50000000
+                                }}'>
+        <div class="swiper-wrapper" style="height: 500px;">
+            @foreach ($Sliders as $slider)
+                <div class="swiper-slide">
+                    <div class="image-layer-three" style="background-image: url({{ $slider->image }});">
+                    </div>
+                    <!-- /.image-layer -->
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="main-slider-three__content">
+                                    <h2 class="main-slider-three__title">{{ $slider->main_title }}</h2>
+                                    <p class="main-slider-three__text">{{ $slider->sub_title }}</p>
+                                    <div class="main-slider-three__btn-box">
+                                        <a href="{{ $slider->link }}" class="thm-btn main-slider-three__btn">
+                                            {{ __('website.Show More') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+        <!-- If we need navigation buttons -->
+        <div class="main-slider-three__nav">
+            <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                <i class="icon-right-arrow"></i>
+            </div>
+            <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                <i class="icon-right-arrow1"></i>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--Main Slider End-->
+@else
+<section class="main-slider-three clearfix">
+    <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                                "effect": "fade",
+                                "pagination": {
+                                "el": "#main-slider-pagination",
+                                "type": "bullets",
+                                "clickable": true
+                                },
+                                "navigation": {
+                                "nextEl": "#main-slider__swiper-button-next",
+                                "prevEl": "#main-slider__swiper-button-prev"
+                                },
+                                "autoplay": {
+                                "delay": 50000000
+                                }}'>
+        <div class="swiper-wrapper" style="height: 500px;">
+                <div class="swiper-slide">
+                    <div class="image-layer-three" style="background-image: url({{asset('/front/images/resource/logo-2.png')}});">
+                    </div>
+                    <!-- /.image-layer -->
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="main-slider-three__content">
+                                    <h2 class="main-slider-three__title">{{__('system.logo')}}</h2>
+                                    <div class="main-slider-three__btn-box">
+                                        <a href="{{route('home')}}" class="thm-btn main-slider-three__btn">
+                                            {{ __('website.Show More') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+        <!-- If we need navigation buttons -->
+        <div class="main-slider-three__nav">
+            <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                <i class="icon-right-arrow"></i>
+            </div>
+            <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                <i class="icon-right-arrow1"></i>
+            </div>
+        </div>
+
+    </div>
+</section>
+@endif
     <!--Main Slider Start-->
-    @if ($config->count() > 0)
+    @if ($config)
         <!--About Three Start-->
         <section class="about-three mt-5">
 
-
-            <div class="testimonial-one-shape-2 float-bob-y">
-                <img src="{{ asset('/front/images/shapes/testimonial-one-shape-2.png') }}" alt="">
-            </div>
+ 
             <div class="container">
                 <div class="row">
+                    <div class="col-xl-6">
+                        <div class="about-one__left">
+                            <div class="about-one__img-box wow slideInLeft animated">
+                                <div class="about-one__img">
+                                    <img src="{{ asset('/front/images/resources/about-one-img-1.jpg') }}" alt="">
+                                </div>
 
-                    <div class="col-xl-12">
+
+                                <div class="about-one__shape-1">
+                                    <img src="{{ asset('/front/images/shapes/about-one-shape-1.jpg') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
                         <div class="about-three__right">
                             <div class="section-title text-center">
                                 <div class="section-sub-title-box">
@@ -25,16 +142,15 @@
                                 </div>
                                 <h2 class="section-title__title">{{ __('website.About') }}</h2>
                             </div>
-                            @foreach ($config as $configs)
-                                <p class="about-three__text">{!! $configs->description !!}</p>
-                            @endforeach
-                        </div>
+                            <p class="about-three__text">@php
+                                echo implode(' ', array_slice(explode(' ', $config->description), 0, 160)) . "\n"; @endphp ...</p>
+
+
+                         </div>
                     </div>
                 </div>
             </div>
-            <div class="testimonial-one-shape-3 float-bob-y">
-                <img src="{{ asset('/front/images/shapes/testimonial-one-shape-3.png') }}" alt="">
-            </div>
+            
         </section>
     @endif
     <!--Goal Three End-->
@@ -45,7 +161,7 @@
 
                     <div class="section-title text-right">
                         <div class="section-sub-title-box">
-                            <p class="section-sub-title">{{ __('website.goal') }}</p>
+                            <p class="section-sub-title"><a href="{{route('Goal')}}">{{ __('website.goal') }}</a></p>
                             <div class="section-title-shape-1">
                                 <img src="{{ asset('/front/images/shapes/section-title-shape-1.png') }}" alt="">
                             </div>
@@ -70,7 +186,7 @@
                                         </div>
                                         <h3 class="feature-one__title"><a
                                                 href="{{ route('Goal') }}">{{ $goal->title }}</a></h3>
-                                        <p class="feature-one__text">{!! $goal->text !!}</p>
+                                        <p class="feature-one__text">@php   echo implode(' ', array_slice(explode(' ', $goal->text), 0, 30))."\n"; @endphp</p>
                                     </div>
                                 </div>
                             </div>
@@ -86,20 +202,19 @@
     @if ($Service->count() > 0)
         <section class="services-three">
             <div class="container">
-                <div class="services-three__inner">
-                    <div class="col-xl-12 col-lg-4 col-md-6 wow fadeInUp mb-3" data-wow-delay="100ms">
-                        <div class="section-title text-left">
-                            <div class="section-sub-title-box">
-                                <p class="section-sub-title">{{ __('website.service') }}</p>
-                                <div class="section-title-shape-1">
-                                    <img src="{{ asset('/front/images/shapes/section-title-shape-1.png') }}" alt="">
-                                </div>
-                                <div class="section-title-shape-2">
-                                    <img src="{{ asset('/front/images/shapes/section-title-shape-2.png') }}" alt="">
-                                </div>
-                            </div>
+                <div class="section-title text-right mb-3">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title"><a href="{{route('services')}}">{{ __('website.service') }}</a></p>
+                        <div class="section-title-shape-1">
+                            <img src="{{ asset('/front/images/shapes/section-title-shape-1.png') }}" alt="">
+                        </div>
+                        <div class="section-title-shape-2">
+                            <img src="{{ asset('/front/images/shapes/section-title-shape-2.png') }}" alt="">
                         </div>
                     </div>
+                </div>
+                <div class="services-three__inner">
+                   
                     <div class="row">
                         <!--Services Three Single Start-->
                        
@@ -112,7 +227,7 @@
                                     <div class="service-one__content" style="height: 230px">
 
                                         <h2 class="service-one__title"><a>{{ $service->title }}</a></h2>
-                                        <p class="service-one__text">@php echo substr($service->text,0,300)@endphp ...</p>
+                                        <p class="service-one__text">@php echo implode(' ', array_slice(explode(' ', $service->text), 0, 30))."\n";   @endphp ...</p>
                                     </div>
                                 </div>
                             </div>
@@ -257,13 +372,14 @@
                                                     <p class="we-provide__tab-main-content-text">{!! $Vision->description !!}</p>
 
                                                 </div>
+                                                
                                                 <div class="we-provide__tab-main-content-right">
                                                     <div class="we-provide__tab-main-content-right-img">
-                                                        <img src="{{ asset('/front/images/resources/we-provide-tab-main-content-right-img.jpg') }}')}}"
-                                                            alt="">
+                                                        <img src="{{asset('/front/images/resources/we-provide-tab-main-content-right-img.jpg')}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
+                                          
                                         </div>
                                     @endif
                                     <!--mission-->
@@ -275,7 +391,7 @@
                                                     <img src="{{ asset('/front/images/shapes/we-provide-shape-1.png') }}"
                                                         alt="">
                                                 </div>
-                                                <div class="we-provide__tab-main-content-left">
+                                                <div class="we-provide__tab-main-content-left ">
                                                     <div class="we-provide__tab-main-content-icon">
                                                         <span class="icon-mission"></span>
                                                     </div>
@@ -285,8 +401,7 @@
                                                 </div>
                                                 <div class="we-provide__tab-main-content-right">
                                                     <div class="we-provide__tab-main-content-right-img">
-                                                        <img src="{{ asset('/front/images/resources/we-provide-tab-main-content-right-img-2.jpg') }}')}}"
-                                                            alt="">
+                                                        <img src="{{asset('/front/images/resources/we-provide-tab-main-content-right-img.jpg')}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -311,8 +426,7 @@
                                                 </div>
                                                 <div class="we-provide__tab-main-content-right">
                                                     <div class="we-provide__tab-main-content-right-img">
-                                                        <img src="{{ asset('/front/images/resources/we-provide-tab-main-content-right-img-3.jpg') }}')}}"
-                                                            alt="">
+                                                        <img src="{{asset('/front/images/resources/we-provide-tab-main-content-right-img.jpg')}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -337,8 +451,7 @@
                                                 </div>
                                                 <div class="we-provide__tab-main-content-right">
                                                     <div class="we-provide__tab-main-content-right-img">
-                                                        <img src="{{ asset('/front/images/resources/we-provide-tab-main-content-right-img-4.jpg') }}')}}"
-                                                            alt="">
+                                                        <img src="{{asset('/front/images/resources/we-provide-tab-main-content-right-img.jpg')}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -363,8 +476,7 @@
                                                 </div>
                                                 <div class="we-provide__tab-main-content-right">
                                                     <div class="we-provide__tab-main-content-right-img">
-                                                        <img src="{{ asset('/front/images/resources/we-provide-tab-main-content-right-img-5.jpg') }}')}}"
-                                                            alt="">
+                                                        <img src="{{asset('/front/images/resources/we-provide-tab-main-content-right-img.jpg')}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -376,6 +488,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     @endif
@@ -417,7 +530,8 @@
                                     </ul>
                                     <h3 class="news-one__title"><a
                                             href="{{ route('event.details', $event->id) }}">{{ $event->title }}</a></h3>
-                                    <p class="news-one__text">@php echo substr($event->description,0,300)@endphp</p>
+                                    <p class="news-one__text">@php 
+                                        echo implode(' ', array_slice(explode(' ', $service->description), 0, 20))."\n"; @endphp</p>
                                     <div class="news-one__read-more">
                                         <a href="{{ route('event.details', $event->id) }}"> {{ __('website.Show More') }}
                                             <i class="fas fa-angle-double-right"></i></a>
@@ -433,7 +547,7 @@
             </div>
         </section>
     @endif
-    @if(($events->count()+$Service->count()+$donors->count()+$goals->count()+$config->count()+$count)<1)
+    @if(($events->count()+$Service->count()+$donors->count()+$goals->count()+$count+$count2)<1)
     <!--Error Page Start-->
     <section class="error-page ">
 

@@ -1,5 +1,21 @@
 @extends('front.layouts.master')
 @section('content')
+
+<section class="page-header">
+    <div class="page-header-bg" style="background-image: url({{asset('/front/images/backgrounds/site-footer-bg.png')}})">
+    </div>
+    <div class="page-header-shape-1"><img src="{{asset('/front/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="{{route('home')}}">{{__('website.home')}}</a></li>
+                <li><span>/</span></li>
+                <li>{{__('website.contact')}}</li>
+            </ul>
+            <h2>{{__('website.contact')}}</h2>
+        </div>
+    </div>
+</section>
 <section class="contact-page">
     <div class="text-wrap">
 
@@ -28,9 +44,9 @@
         <div class="row">
             <div class="col-xl-4 col-lg-5">
                 <div class="contact-page__left">
-                    <div class="section-title text-left">
+                    <div class="section-title text-right">
                         <div class="section-sub-title-box">
-                            <p class="section-sub-title">{{__('website.contact')}}</p>
+                            <p class="section-sub-title  ">{{__('website.contact')}}</p>
                             <div class="section-title-shape-1">
                                 <img src="{{asset('/front/images/shapes/section-title-shape-1.png')}}" alt="">
                             </div>

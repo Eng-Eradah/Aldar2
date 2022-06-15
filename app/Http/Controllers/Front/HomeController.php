@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Mail\ContactMail;
 use App\Models\Book;
 use App\Models\ConfigureSystem;
 use App\Models\Donor;
@@ -10,7 +11,6 @@ use App\Models\Goal;
 use App\Models\Job;
 use App\Models\Service;
 use Illuminate\Support\Facades\App;
-use App\Mail\ContactMail;
 use Mail;
 
 class HomeController extends BaseController
@@ -19,20 +19,21 @@ class HomeController extends BaseController
     public function index()
     {
         $locale = App::currentLocale();
-        $Service = Service::where(['is_active' => 1, 'lang' => $locale])->take(4)->get();
+        $Service = Service::where(['is_active' => 1, 'lang' => $locale])->take(3)->get();
         $artilce = Event::where(['is_active' => 1, 'lang' => $locale])->take(3)->get();
         $goal = Goal::where(['is_active' => 1, 'lang' => $locale])->take(3)->get();
         $donor = Donor::where(['is_active' => 1, 'lang' => $locale])->get();
-        $config = ConfigureSystem::where('title', 'AboutUs')->where(['is_active' => 1, 'lang' => $locale])->get();
+        $config = ConfigureSystem::where('title', 'AboutUs')->where(['is_active' => 1, 'lang' => $locale])->first();
         $Strategy = ConfigureSystem::where('title', 'Strategy')->where(['is_active' => 1, 'lang' => $locale])->first();
         $Scope = ConfigureSystem::where('title', 'Scope')->where(['is_active' => 1, 'lang' => $locale])->first();
         $Brife = ConfigureSystem::where('title', 'Brife')->where(['is_active' => 1, 'lang' => $locale])->first();
         $Mission = ConfigureSystem::where('title', 'Mission')->where(['is_active' => 1, 'lang' => $locale])->first();
         $Vision = ConfigureSystem::where('title', 'Vision')->where(['is_active' => 1, 'lang' => $locale])->first();
         $count = ConfigureSystem::where('title', '<>', 'AboutUs')->where(['is_active' => 1, 'lang' => $locale])->count();
+        $count2 = ConfigureSystem::where('title', 'AboutUs')->where(['is_active' => 1, 'lang' => $locale])->count();
 
         return view('front.site.index')->with([
-            'config' => $config, 'Service' => $Service, 'donors' => $donor, 'count' => $count,
+            'config' => $config, 'Service' => $Service, 'donors' => $donor, 'count' => $count, 'count2' => $count2,
             'Vision' => $Vision, 'Mission' => $Mission, 'Brife' => $Brife,
             'Scope' => $Scope, 'Strategy' => $Strategy, 'events' => $artilce, 'goals' => $goal]);
     }
@@ -69,6 +70,7 @@ class HomeController extends BaseController
     {
         $locale = App::currentLocale();
         $artilce = Event::where(['is_active' => 1, 'lang' => $locale, 'id' => $id])->first();
+        
         $artilces = Event::where(['is_active' => 1, 'lang' => $locale])->inRandomOrder()->limit(4)->get();
 
         return view('front.site.event_details')->with(['event' => $artilce, 'events' => $artilces]);
@@ -121,7 +123,8 @@ class HomeController extends BaseController
         return view('front.site.job_details')->with(['item' => $artilce, 'items' => $artilces]);
     }
 
-    public function contact(){
+    public function contact()
+    {
         return view('front.site.contact');
     }
 
