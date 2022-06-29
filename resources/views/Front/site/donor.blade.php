@@ -1,9 +1,7 @@
 @extends('front.layouts.master')
 @section('content')
 <style>
-    .service-one__title:before{
-        background-image:none;
-    }
+     
 </style>
     <section class="page-header">
         <div class="page-header-bg"
@@ -34,8 +32,9 @@
                 <div class="col-xl-3 col-lg-2 col-md-3 wow fadeInUp animated mb-5">
                    
                 <div class="card" style="width: 18rem;">
-                    <img src="{{$donors->image}}" class="card-img-top news-one__img mb-5" alt="...">
-                    <div class="card-body">
+                    <div class="card-img">
+                    <img src="{{$donors->image}}"  class="card-img-top  news-one__img mb-5" height="200px"    alt="...">
+                </div><div class="card-body">
                       <h4 class="card-text text-center" style="color:#015fc9 ">{{$donors->name}}</h4>
                     </div>
                   </div>  
