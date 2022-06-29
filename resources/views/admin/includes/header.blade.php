@@ -94,10 +94,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">اختيار الدولة</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+             
           </div>
           <div class="modal-body d-flex  justify-content-center">
             <div class="row mr-5">
@@ -116,34 +113,12 @@
               
                      {{-- @endif --}}              
                     <div class="dropdown d-none d-md-flex" >
-                        <a  class="nav-link icon">
+                        <a  class="nav-link icon"  href="{{route('logout_user')}}">
                             <i class="fe fe-log-out"></i>
                         </a>
                     </div>
     
-                    <div class="dropdown d-none d-md-flex">
-                        <a class="nav-link icon" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class=" nav-unread badge badge-danger  badge-pill" id="num"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow" id="notiBody">
-    
-                        </div>
-                    </div>
-                    <div class="dropdown ">
-                        <a href="#" class="nav-link pl-0 leading-none user-img" data-toggle="dropdown">
-                            {{-- <img src="{{!empty(user()->user()->profiles()->where('name', 'image')->first())?asset(user()->user()->profiles()->where('name', 'image')->first()->value):asset('/public/assets/images/users/female/25.jpg')}}" alt="profile-img" class="avatar avatar-md brround"> --}}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow ">
-                            <a class="dropdown-item" href="#">
-                                <i class="dropdown-icon icon icon-user"></i> حسابي
-                            </a>
-    
-                            <a class="dropdown-item" href="#">
-                                <i class="dropdown-icon icon icon-power"></i> خروج
-                            </a>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

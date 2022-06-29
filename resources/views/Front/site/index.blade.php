@@ -54,6 +54,7 @@
 
     </div>
 </section>
+
 <!--Main Slider End-->
 @else
 <section class="main-slider-three clearfix">
@@ -107,7 +108,7 @@
     </div>
 </section>
 @endif
-    <!--Main Slider Start-->
+   <!--Main Slider Start-->
     @if ($config)
         <!--About Three Start-->
         <section class="about-three mt-5">
@@ -242,7 +243,7 @@
     <!--Services Three End-->
 
     <!--Brand One Start-->
-    @if ($donors->count() > 0)
+    {{-- @if ($donors->count() > 0)
 
         <section class="brand-one">
             <div class="container">
@@ -304,7 +305,7 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
     <!--Brand One End-->
 
 
@@ -507,12 +508,11 @@
                 <div class="row">
                     <!--News One Single Start-->
                     @foreach ($events as $event)
-
-                        <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="100ms"
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp animated" data-wow-delay="100ms"
                             style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
                             <div class="news-one__single">
                                 <div class="news-one__img">
-                                    <img src="{{ $event->image }}" alt="">
+                                    <img src="{{ $event->image }}" alt="" height="220px">
 
                                     <div class="news-one__arrow-box">
                                         <a href="{{ route('event.details', $event->id) }}" class="news-one__arrow">
@@ -521,22 +521,27 @@
                                     </div>
                                 </div>
                                 <div class="news-one__content">
+                                    <div  style="height: 250px">
                                     <ul class="list-unstyled news-one__meta">
                                         <li><a href="{{ route('event.details', $event->id) }}"><i
-                                                    class="far fa-calendar"></i> {{ $event->created_at->format('j F, Y') }}
+                                                    class="far fa-calendar"></i>
+                                                {{ $event->created_at->format('j F, Y') }}
                                             </a>
                                         </li>
-
                                     </ul>
                                     <h3 class="news-one__title"><a
-                                            href="{{ route('event.details', $event->id) }}">{{ $event->title }}</a></h3>
-                                    <p class="news-one__text">@php 
-                                        echo implode(' ', array_slice(explode(' ', $service->description), 0, 20))."\n"; @endphp</p>
+                                            href="{{ route('event.details', $event->id) }}">{{ $event->title }}</a>
+                                    </h3>
+                                    <p class="news-one__text">{{ $event->text }}</p>
+                                </div>
                                     <div class="news-one__read-more">
-                                        <a href="{{ route('event.details', $event->id) }}"> {{ __('website.Show More') }}
+                                        <a href="{{ route('event.details', $event->id) }}">
+                                            {{ __('website.Show More') }}
                                             <i class="fas fa-angle-double-right"></i></a>
                                     </div>
                                 </div>
+                                
+                               
                             </div>
                         </div>
                     @endforeach

@@ -39,7 +39,7 @@
 
                             </div>
                             <div class="pricing__btn-box">
-                                <a href="{{ route('job.details', $item->id) }}"
+                                <a href="{{ route('apply', $item->id) }}"
                                     class="thm-btn pricing__btn">{{ __('website.apply') }}</a>
                             </div>
 

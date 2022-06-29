@@ -34,42 +34,75 @@
                 </div>
 
             </div>
-            
+
             <form class="card" method="POST" action="{{ route('add_ads') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="row m-2">
-                    <div class="col-md-12 ">
-                        <div class="form-group col-md-4">
-                            <label for="inputState" class="col-form-label">{{ __('system.lang') }}</label>
+                
+
+                    <div class="row col-12">
+                        <div class="col-6">
+                            <div class="form-group col-12">
+                                <label for="inputState" class="col-form-label">{{ __('system.lang') }}</label>
                             <select id="inputState" name="lang" class="form-control">
                                 @foreach ($langs as $lang)
 
-                                    <option value="{{ $lang->lang }}" @if(isset($data->lang) && ($data->lang==$lang->lang)) selected  @endif>{{ $lang->value }}</option>
+                                    <option value="{{ $lang->lang }}" @if (isset($data->lang) && $data->lang == $lang->lang) selected @endif>{{ $lang->value }}</option>
                                 @endforeach
                             </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label text-dark"> {{ __('system.title') }}</label>
-                            @if (isset($data->id))
-                                <input type="hidden" name="id" value="{{ $data->id }}">
-                            @endif
-                        <input type="text" name="title" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
-                            {{ old('title') }} @endif"
-                            placeholder="{{ __('system.title') }}">
-                            <span id="c_nameArError" class="jsError" role="alert"></span>
-                            @error('title')
-                                <div class=" text-danger">{{ $message }}</div>
-                            @enderror
+                        <div class="col-6">
+                            <div class="form-group col-12">
+                                <label class="form-label text-dark"> {{ __('system.title') }}</label>
+                                @if (isset($data->id))
+                                    <input type="hidden" name="id" value="{{ $data->id }}">
+                                @endif
+                                 <input type="text" name="title" class="form-control" value="@if (isset($data->id)) {{ $data->main_title }} @else
+                                {{ old('title') }} @endif"
+                                placeholder="{{ __('system.title') }}">
+                                <span id="c_nameArError" class="jsError" role="alert"></span>
+                                @error('title')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 
+
+                    <div class="row col-12">
+                        <div class="col-6">
+                            <div class="form-group col-12">
+                                <label class="form-label text-dark"> تاريخ البدء</label>
+                                @if (isset($data->id))
+                                    <input type="hidden" name="id" value="{{ $data->id }}">
+                                     @endif
+                                     <input class="form-control" value="@if(isset($data->id)){{$data->start_date}}@else {{ old('start_date') }} @endif" name="start_date" type="date">
+                                <span id="c_nameArError" class="jsError" role="alert"></span>
+                                @error('start_date')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group col-12">
+                                <label class="form-label text-dark"> تاريخ الانتهاء </label>
+    
+                                <input  class="form-control" value="@if(isset($data->id)){{$data->end_date}}@else {{ old('end_date') }} @endif" name="end_date" type="date">
+                                <span id="c_nameArError" class="jsError" role="alert"></span>
+                                @error('end_date')
+                                    <div class=" text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-12 ">
                         <div class="form-group">
                             <label class="form-label text-dark"> {{ __('system.descripe') }}</label>
                             @if (isset($data->id))
                                 <input type="hidden" name="id" value="{{ $data->id }}">
                             @endif
-                            <input type="text" name="description" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else {{ old('description') }} @endif"
+                        <input type="text" name="description" class="form-control" value="@if (isset($data->id)) {{ $data->sub_title }} @else
+                            {{ old('description') }} @endif"
                             placeholder="{{ __('system.description') }}">
                             <span id="c_nameArError" class="jsError" role="alert"></span>
                             @error('description')
@@ -83,7 +116,7 @@
                     </div>
 
 
-                    <input type="file" class="dropify" data-default-file="@if(isset($data->image)) {{ $data->image }} @endif" name="image" data-height="180" accept="image/*" />
+                    <input type="file" class="dropify" data-default-file="@if (isset($data->image)) {{ $data->image }} @endif" name="image" data-height="180" accept="image/*" />
 
 
                     <span id="c_imgError" class="jsError" role="alert"></span>
@@ -107,6 +140,6 @@
             selector: 'textarea#tinymce',
             height: 600
         });
-    
-    </script> 
+
+    </script>
 @endsection

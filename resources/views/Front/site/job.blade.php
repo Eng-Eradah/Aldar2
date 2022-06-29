@@ -64,16 +64,17 @@
                                                                 style="margin-left: 20px"></i>{{ $data->end_date }}</p>
                                                     </div>
                                                      
-                                                    <div class="pricing__single-bottom" >
+                                                    <div class="pricing__single-bottom" style="height: 150px" >
                                                         <h3 class="pricing__title">{{ $data->title }}</h3>
                                                         <div class="list-unstyled pricing__points line-clamp"  >
                                                             {{$data->text}}
                                                             </div>
-                                                        <div class="pricing__btn-box">
+                                                       
+                                                    </div>
+                                                    <div class="pricing__btn-box">
                                                             
-                                                            <a href="{{ route('job.details', $data->id) }}"
-                                                                class="thm-btn pricing__btn">{{ __('website.details') }}</a>
-                                                        </div>
+                                                        <a href="{{ route('job.details', $data->id) }}"
+                                                            class="thm-btn pricing__btn">{{ __('website.details') }}</a>
                                                     </div>
                                                 </div>
                                             </div>

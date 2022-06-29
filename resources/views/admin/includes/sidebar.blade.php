@@ -16,6 +16,8 @@
 						</div>
 					</div>
 					<ul class="side-menu">
+						@role('admin')
+
 					    
 						<li class="slide">
 							<a class="side-menu__item"  href="{{route('configure')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> {{ __('system.side.web') }}</span></a>
@@ -50,11 +52,17 @@
 							<a class="side-menu__item"  href="{{route('report')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> التقارير</span></a>
 						
 						</li>
+						 
 						<li class="slide">
-							<a class="side-menu__item"  href="{{route('job')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الوظائف</span></a>
-						
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label">الوظائف</span><i class="angle fa fa-angle-right"></i></a>
+							<ul class="slide-menu">
+								<li>	<a class="side-menu__item"  href="{{route('job')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الوظائف الحالية</span></a></li>
+								<li><a class="side-menu__item"  href="{{route('job',1)}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الوظائف المنتهيه</span></a>
+								</li>
+							
+							</ul>
 						</li>
-						
+						 
 						<li class="slide">
 							<a class="side-menu__item"  href="{{route('user')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> الستخدمين</span></a>
 							
@@ -77,6 +85,20 @@
 						
 						</li>
 						
+					@endrole
+					@role('lawyer')
 					
-					</ul>
+					<li class="slide">
+						<a class="side-menu__item"  href="{{route('reports')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> التقارير</span></a>
+					
+					</li>
+					@else
+					
+					<li class="slide">
+						<a class="side-menu__item"  href="{{route('userReport')}}"><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"> التقارير</span></a>
+					
+					</li>
+					@endrole
+				</ul>
+
 				</aside>

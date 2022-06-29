@@ -19,69 +19,75 @@
 </section>
     @if ($book->id > 0)
         <!--Portfolio Details Start-->
-        <section class="portfolio-details">
+         
+        <!--Portfolio Details End-->
+        <section class="news-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-12">
-                        <div class="portfolio-details__img">
-                            <img src="{{ $book->image }}" height="300px" alt="">
+                    <div class="col-xl-8 col-lg-8">
+                        <div class="news-details__left">
+                            <div class="news-details__img">
+                                <img src="{{ $book->image }}" alt="" height="400px">
+                            </div>
+                            <div class="news-details__content">
+                                <ul class="list-unstyled news-details__meta">
+                                    <li><a href=""><i class="far fa-calendar"></i>
+                                            {{ $book->created_at->format('j F, Y') }} </a>
+                                    </li>
+
+                                </ul>
+                                <h3 class="news-details__title">{{ $book->title }}</h3>
+                                <p class="news-details__text-1">{!! $book->description !!}</p>
+                            </div>
+
+
                         </div>
                     </div>
-                </div>
-                <div class="portfolio-details__content">
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="portfolio-details__content-left">
-                                <h3 class="portfolio-details__title">{{ $book->title }}</h3>
-                                <p class="portfolio-details__text-1">{!! $book->description !!}</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4">
-                            <div class="portfolio-details__content-right">
-                                <div class="portfolio-details__details-box">
-                                    <ul class="list-unstyled portfolio-details__details-list">
-                                        <li>
-                                            <p class="portfolio-details__client">{{ __('website.auther') }} :</p>
-                                            <h4 class="portfolio-details__name">{{ $book->auther }}</h4>
-                                        </li>
-                                        <li>
-                                            <p class="portfolio-details__client"> {{ __('website.publisher') }} :</p>
-                                            <h4 class="portfolio-details__name">{{ $book->publisher }}</h4>
-                                        </li>
-                                        <li>
-                                            <p class="portfolio-details__client">{{ __('website.category') }}:</p>
-                                            <h4 class="portfolio-details__name">{{ $book->Category->name }}</h4>
-                                        </li>
-                                        <li>
-                                            <p class="portfolio-details__client">{{ __('website.date') }}:</p>
-                                            <h4 class="portfolio-details__name">{{ $book->date }}</h4>
-                                        </li>
-                                        <li>
-                                            <p class="portfolio-details__client">{{ __('website.count') }}:</p>
-                                            <h4 class="portfolio-details__name">{{ $book->download_count }}</h4>
-                                        </li>
-                                        <li class="m-0">
-                                            <div class="error-page__title-box m-0">
-                                                <a href="{{ route('download', $book->id) }}"
-                                                    class="thm-btn error-page__btn mt-5">{{ __('website.download') }}</a>
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="sidebar">
 
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="sidebar__single sidebar__post">
+                                    <div class="portfolio-details__content-right">
+                                        <div class="portfolio-details__details-box">
+                                            <ul class="list-unstyled portfolio-details__details-list">
+                                                <li>
+                                                    <p class="portfolio-details__client">{{ __('website.auther') }} :</p>
+                                                    <h4 class="portfolio-details__name">{{ $book->auther }}</h4>
+                                                </li>
+                                                <li>
+                                                    <p class="portfolio-details__client"> {{ __('website.publisher') }} :</p>
+                                                    <h4 class="portfolio-details__name">{{ $book->publisher }}</h4>
+                                                </li>
+                                                <li>
+                                                    <p class="portfolio-details__client">{{ __('website.category') }}:</p>
+                                                    <h4 class="portfolio-details__name">{{ $book->Category->name }}</h4>
+                                                </li>
+                                                <li>
+                                                    <p class="portfolio-details__client">{{ __('website.date') }}:</p>
+                                                    <h4 class="portfolio-details__name">{{ $book->date }}</h4>
+                                                </li>
+                                                <li>
+                                                    <p class="portfolio-details__client">{{ __('website.count') }}:</p>
+                                                    <h4 class="portfolio-details__name">{{ $book->download_count }}</h4>
+                                                </li>
+                                                <li class="m-0">
+                                                    <div class="error-page__title-box m-0">
+                                                        <a href="{{ route('download', $book->id) }}"
+                                                            class="thm-btn error-page__btn mt-5">{{ __('website.download') }}</a>
+        
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-xl-12" style="border-top: 1px solid var(--insur-bdr-color);">
 
+
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--Portfolio Details End-->
-
         <!--Similar Portfolio Start-->
         <section class="similar-portfolio">
             <div class="container">

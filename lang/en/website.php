@@ -47,6 +47,7 @@ return [
     'last_job'=>'Last Jobs',
     'open_hour'=>'Open Hours',
     'address'=>"Hadda street, in front of Authority Of General Investment Sana'a, Yemen",
+    'addres'=>"Address",
     'name'=>'Your Name ',
     'email'=>' Email Address ',
     'phone'=>'Phone Number ',
@@ -54,5 +55,12 @@ return [
     'message'=>' Write a message ',
     'send'=>' Send',
     'sendEmail'=>'Email Send Succefully',
+    'info'=>'Personal Information',
+    'education'=>'Educaction Info',
+    'degree'=>'Educaction Degree',
+    'year'=>'Year of Graduation ',
+    'experience'=>'Year of Experience ',
+    'cv'=>'Upload You Cv',
+    'another_info'=>'Another Information',
 
 ];

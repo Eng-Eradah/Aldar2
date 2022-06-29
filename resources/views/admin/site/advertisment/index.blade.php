@@ -43,6 +43,8 @@
                                             <th>{{ __('system.subTitle') }}</th>    
                                             <th>{{ __('system.image') }}</th>    
                                             <th>{{ __('system.lang') }}</th>    
+                                            <th> تاريخ البدء</th>    
+                                            <th> تاريخ الانتهاء</th> 
                                             <th>{{ __('system.status') }}</th>    
                                         
                                             <th>{{ __('system.operation') }}</th>    
@@ -58,7 +60,8 @@
                                             <th>{{$data->description }}</th>    
                                             <th><img width="200px"src="{{$data->image}}"></th>    
                                             <th>{{$data->lang}}</th>    
-                                           
+                                            <th>{{$data->start_date}}</th>    
+                                            <th>{{$data->end_date}}</th>  
                                             <th>
                                                 @if($data->is_active==1)
                                                 <span class='badge badge-success'>{{ __('system.active') }}</span>

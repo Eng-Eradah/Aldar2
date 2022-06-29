@@ -87,6 +87,8 @@
     <link rel="stylesheet" href="{{ asset('/front/vendors/jquery-ui/jquery-ui.css') }}" />
     <link rel="stylesheet" href="{{ asset('/front/vendors/timepicker/timePicker.css') }}" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="{{asset('/admin/plugins/fileuploads/css/fileupload.css')}}" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="{{asset('/admin/dist/aksFileUpload.min.css')}}">
 
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('/front/css/insur.css') }}" />

@@ -1,4 +1,4 @@
-<?php
+                <?php
 
 use App\Http\Controllers\Admin\AdvertismentController;
 use App\Http\Controllers\Admin\AuthController;
@@ -40,78 +40,84 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/download/{id?}', [HomeController::class, 'download'])->name('download');
     Route::get('/job/details/{id}', [HomeController::class, 'jobDetails'])->name('job.details');
     Route::get('/jobs', [HomeController::class, 'job'])->name('jobs');
+    Route::get('/apply/{id}', [HomeController::class, 'apply'])->name('apply');
+    Route::post('/applyJob/{id}', [HomeController::class, 'applyJob'])->name('applyJob');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/Donor', [HomeController::class, 'donor'])->name('Donor');
     Route::get('/send_contact', [HomeController::class, 'saveContact'])->name('send_contact');
-    
+
 });
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth', 'roles:admin']], function () {
     Route::group(['prefix' => 'admin'], function () {
 
-//configure system page
+        //configure system page
         Route::get('/configure', [ConfigureController::class, 'index'])->name('configure');
         Route::get('/addconfigure/{type}/{id?}', [ConfigureController::class, 'create'])->name('addconfigure');
         Route::get('/toggle_configure/{id?}', [ConfigureController::class, 'toggle'])->name('toggle_configure');
         Route::post('/add_configure', [ConfigureController::class, 'store'])->name('add_configure');
 
-//category Page
+        //category Page
         Route::get('/category', [CategoryController::class, 'index'])->name('category');
         Route::get('/addCat/{id?}', [CategoryController::class, 'create'])->name('addCat');
         Route::get('/toggle_category/{id?}', [CategoryController::class, 'toggle'])->name('toggle_category');
         Route::post('/add_category', [CategoryController::class, 'store'])->name('add_category');
-//Goal Page
+        //Goal Page
         Route::get('/goals', [GoalController::class, 'index'])->name('goals');
         Route::get('/addGoals/{id?}', [GoalController::class, 'create'])->name('addGoals');
         Route::get('/toggle_goals/{id?}', [GoalController::class, 'toggle'])->name('toggle_goals');
         Route::post('/add_goals', [GoalController::class, 'store'])->name('add_goals');
-//Service page
+        //Service page
         Route::get('/service', [ServiceController::class, 'index'])->name('service');
         Route::get('/addService/{id?}', [ServiceController::class, 'create'])->name('addService');
         Route::get('/toggle_service/{id?}', [ServiceController::class, 'toggle'])->name('toggle_service');
         Route::post('/add_service', [ServiceController::class, 'store'])->name('add_service');
-//silder page
+        //silder page
         Route::get('/slider', [SliderController::class, 'index'])->name('slider');
         Route::get('/addSlider/{id?}', [SliderController::class, 'create'])->name('addSlider');
         Route::get('/toggle_silder/{id?}', [SliderController::class, 'toggle'])->name('toggle_silder');
         Route::post('/add_silder', [SliderController::class, 'store'])->name('add_silder');
-//advertisment page
+        //advertisment page
         Route::get('/advertisment', [AdvertismentController::class, 'index'])->name('advertisment');
         Route::get('/addAds/{id?}', [AdvertismentController::class, 'create'])->name('addAds');
         Route::get('/toggle_ads/{id?}', [AdvertismentController::class, 'toggle'])->name('toggle_ads');
         Route::post('/add_ads', [AdvertismentController::class, 'store'])->name('add_ads');
-//lang page
+        //lang page
         Route::get('/lang', [LangController::class, 'index'])->name('lang');
         Route::get('/addlang/{id?}', [LangController::class, 'create'])->name('addlang');
         Route::get('/toggle_lang/{id?}', [LangController::class, 'toggle'])->name('toggle_lang');
         Route::post('/add_lang', [LangController::class, 'store'])->name('add_lang');
-//book page
+        //book page
         Route::get('/book', [BookController::class, 'index'])->name('book');
         Route::get('/addbook/{id?}', [BookController::class, 'create'])->name('addbook');
         Route::get('/toggle_book/{id?}', [BookController::class, 'toggle'])->name('toggle_book');
         Route::post('/add_book', [BookController::class, 'store'])->name('add_book');
-//user route
+        //user route
         Route::get('/user', [UserController::class, 'index'])->name('user');
         Route::get('/adduser/{id?}', [UserController::class, 'create'])->name('adduser');
         Route::get('/toggle_user/{id?}', [UserController::class, 'toggle'])->name('toggle_user');
         Route::post('/add_user', [UserController::class, 'store'])->name('add_user');
         Route::get('/virefiy_email/{token}', [UserController::class, 'verifyEmail'])->name('virefiy_email');
-//donor page
+        //donor page
         Route::get('/donor', [DonorController::class, 'index'])->name('donor');
         Route::get('/adddonor/{id?}', [DonorController::class, 'create'])->name('adddonor');
         Route::get('/toggle_donor/{id?}', [DonorController::class, 'toggle'])->name('toggle_donor');
         Route::post('/add_donor', [DonorController::class, 'store'])->name('add_donor');
-//report
+        //report
         //report page
         Route::get('/report', [ReportController::class, 'index'])->name('report');
         Route::get('/addreport/{id?}', [ReportController::class, 'create'])->name('addreport');
         Route::get('/toggle_report/{id?}', [ReportController::class, 'toggle'])->name('toggle_report');
         Route::post('/add_report', [ReportController::class, 'store'])->name('add_report');
-//job page
-        Route::get('/job', [JobController::class, 'index'])->name('job');
+        Route::get('/show/{id?}', [ReportController::class, 'show'])->name('show');
+
+        //job page
+        Route::get('/job/{id?}', [JobController::class, 'index'])->name('job');
         Route::get('/addjob/{id?}', [JobController::class, 'create'])->name('addjob');
+        Route::get('/Employment/{id?}', [JobController::class, 'Employment'])->name('Employment');
         Route::get('/toggle_job/{id?}', [JobController::class, 'toggle'])->name('toggle_job');
         Route::post('/add_job', [JobController::class, 'store'])->name('add_job');
-//event page
+        //event page
         Route::get('/event', [EventController::class, 'index'])->name('event');
         Route::get('/addEvent/{id?}', [EventController::class, 'create'])->name('addEvent');
         Route::get('/toggle_event/{id?}', [EventController::class, 'toggle'])->name('toggle_event');
@@ -120,25 +126,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 });
 //lawyer route
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth', 'roles:lawyer']], function () {
-    Route::group(['prefix' => 'admin'], function () {
-        //report page
-        Route::get('/reports', [ReportController::class, 'index'])->name('reports');
-        Route::get('/addreports/{id?}', [ReportController::class, 'create'])->name('addreports');
-        Route::get('/toggle_reports/{id?}', [ReportController::class, 'toggle'])->name('toggle_reports');
-        Route::post('/add_reports', [ReportController::class, 'store'])->name('add_reports');
+//report page
+Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+Route::get('/userReport', [ReportController::class, 'userReport'])->name('userReport');
+Route::get('/admin/addreports/{id?}', [ReportController::class, 'create'])->name('addreports');
+Route::get('/admin/toggle_reports/{id?}', [ReportController::class, 'toggle'])->name('toggle_reports');
+Route::post('/admin/add_reports', [ReportController::class, 'store'])->name('add_reports');
+Route::get('/show/{id?}', [ReportController::class, 'show'])->name('show');
 
-    });
-});
-//user route
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth', 'roles:user']], function () {
-    Route::group(['prefix' => 'admin'], function () {
-    });
-});
 // user authentication
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/check_user', [AuthController::class, 'checkUser'])->name('check_user');
-Route::post('/logout_user', [AuthController::class, 'logout'])->name('logout_user');
+Route::get('/logout_user', [AuthController::class, 'logout'])->name('logout_user');
 
 Route::middleware([
     'auth:sanctum',

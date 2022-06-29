@@ -18,9 +18,27 @@ class ReportController extends Controller
     public function index()
     {
 
-        $book = Report::with('user:id,name')->where('lawyer_id', Auth::user()->id)->get();
+        $book = Report::with('user:id,name', 'lawyer:id,name')->get();
         return view('admin.site.report.index')
             ->with('item', $book);
+
+    }
+    public function userReport()
+    {
+
+        $book = Report::with('user:id,name', 'lawyer:id,name')->whereHas('user',function($q){
+            return $q->whereId(Auth::user()->id);
+        })->get();
+        return view('admin.site.report.userReport')
+            ->with('item', $book);
+
+    }
+    public function show($id)
+    {
+
+        $book = Report::with('user:id,name', 'lawyer:id,name')->whereId($id)->first();
+        return view('admin.site.report.show')
+            ->with('data', $book);
 
     }
     public function create($id = null)
@@ -48,7 +66,7 @@ class ReportController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
             // dd($request);
-            $path=null;
+            $path = null;
             if ($request->hasFile('aksfileupload')) {
                 foreach ($request->file('aksfileupload') as $image) {
                     $imageName = $image->getClientOriginalName();
@@ -58,11 +76,10 @@ class ReportController extends Controller
                 $path = json_encode($fileNames);
             }
 
-
             $result = Report::updateOrCreate(['id' => $request->id], [
                 'title' => $request->input('title'),
                 'report' => $request->input('report'),
-                'file' =>isset($path)?$path:$request->file,
+                'file' => isset($path) ? $path : $request->file,
                 'lawyer_id' => 12,
                 'user_id' => $request->input('user_id'),
             ]);

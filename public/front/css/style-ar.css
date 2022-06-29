@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 body {
   direction: rtl;
-  font-family: "Raleway";
+  font-family: "Amiri";
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/raleway/v27/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4Y_LDr4fIA9c.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  
 }
 
 .feature-three__content {
@@ -66,7 +66,7 @@ body {
 }
 .main-menu-three .main-menu__list>li,
 .stricky-header.main-menu-three .main-menu__list>li{
-  margin-left: 50px;
+  margin-left: 30px;
 }
 .search-popup__content form input[type="search"],
 .search-popup__content form input[type="text"]{

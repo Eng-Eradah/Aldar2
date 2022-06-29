@@ -35,7 +35,8 @@ class AdvertismentController extends Controller
             'description' => ['required','min:10'],
             'image' => ['nullable','image','mimes:jpg,png,jpeg,gif,svg'],
             'lang' => ['required'],
-
+            'start_date' => ['required', 'date','after_or_equal:Today'],
+            'end_date' => ['required', 'date', 'after:start_date'],
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -45,6 +46,8 @@ class AdvertismentController extends Controller
          'description'=>$request->input('description'),
          'image' => $request->hasFile('image') ? $this->upload_img($request->file('image')) : ($request->input('logo') ? explode('/', $request->input('logo'))[5] : "default.png"),
          'lang'=>$request->input('lang'),
+         'start_date' => $request->input('start_date'),
+         'end_date' => $request->input('end_date'),
         ]);
         if ($result) {
             return redirect()->back()->with(['success' => 'تم العملية  بنجاح   ']);

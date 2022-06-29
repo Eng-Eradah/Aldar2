@@ -10,8 +10,12 @@ use App\Models\Event;
 use App\Models\Goal;
 use App\Models\Job;
 use App\Models\Service;
+use App\Models\JobDetails;
 use Illuminate\Support\Facades\App;
 use Mail;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Utilities\Upload;
+use Validator;
 
 class HomeController extends BaseController
 {
@@ -45,6 +49,13 @@ class HomeController extends BaseController
 
         return view('front.site.goal')->with(['goals' => $goal]);
     }
+    public function donor()
+    {
+        $locale = App::currentLocale();
+        $donor = Donor::where(['is_active' => 1, 'lang' => $locale])->get();
+
+        return view('front.site.donor')->with(['donor' => $donor]);
+    }
     public function service()
     {
         $locale = App::currentLocale();
@@ -70,7 +81,7 @@ class HomeController extends BaseController
     {
         $locale = App::currentLocale();
         $artilce = Event::where(['is_active' => 1, 'lang' => $locale, 'id' => $id])->first();
-        
+
         $artilces = Event::where(['is_active' => 1, 'lang' => $locale])->inRandomOrder()->limit(4)->get();
 
         return view('front.site.event_details')->with(['event' => $artilce, 'events' => $artilces]);
@@ -140,6 +151,55 @@ class HomeController extends BaseController
         ];
         Mail::to("contact@cvyemen.com")->send(new ContactMail($details));
         return redirect()->back()->with(['success' => __('website.sendEmail')]);
+
+    }
+    public function apply($id)
+    {
+        $artilce = Job::where(['is_active' => 1, 'id' => $id])->first();
+
+        return view('front.site.apply')->with(['id' => $id]);
+    }
+    public function applyJob(Request $request,$id){
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'min:5'],
+            'address' => ['required', 'min:5'],
+            'email' => ['required', 'email'],
+            'phone' => ['required','numeric','digits:9'],
+            'degree' => ['required' ],
+            'birth_date' => ['required', 'date' ],
+            'date' => ['required', 'date' ],
+            'experience' => ['required', 'min:1', 'max:20'],
+            'information' => ['nullable', 'min:3'],
+            'cv' => ['required', 'mimes:pdf'],
+
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $result = JobDetails::updateOrCreate(['job_id' => $id], [
+                'email' => $request->input('email'),
+                'phone' => $request->input('phone'),
+                'cv' => $request->hasFile('cv') ?? $this->upload_img($request->file('cv')) ,
+                'name' => $request->input('name'),
+                'address' => $request->input('address'),
+                'birth_date' => $request->input('birth_date'),
+                'degree' => $request->input('degree'),
+                'experience' => $request->input('experience'),
+                'information' => $request->input('information'),
+                'date' => $request->input('date'),
+            ]);
+            if ($result) {
+                return redirect()->back()->with(['success' => 'تم العملية  بنجاح   ']);
+            }
+
+            return redirect()->back()->with(['error' => 'فشلت العملية يرجى التأكد من صحة البيانات المدخلة']);
+
+        }
+    }
+    public function upload_img($file_img)
+    {
+        $path = '/images/cv/';
+        return Upload::upload($file_img, $path);
 
     }
 }

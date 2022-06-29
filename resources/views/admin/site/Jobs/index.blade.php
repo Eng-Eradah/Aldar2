@@ -55,8 +55,8 @@
                                         <tr>
                                             <td>{{$data->id}}</td>
                                             <th>{{$data->title}}</th>    
-                                            <td>@php echo substr($data->requirment,0,200)@endphp</td>
-
+                                            <td>{{$data->text}}</td>
+ 
                                             <th>{{$data->start_date}}</th>    
                                             <th>{{$data->end_date}}</th>    
                                            
@@ -73,7 +73,11 @@
                                     
                                             
                                             <th>
-                                                
+                                                @if(isset($id))
+                                                <div class="btn-group">
+                                                    <a href="{{route('Employment',$data->id)}}" class="btn btn-info"><i class="fa fa-address-card"></i></a>
+                                                 </div>
+                                                @else
                                                 <div class="btn-group">
                                                     <a href="{{route('addjob',$data->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                                 
@@ -85,6 +89,7 @@
                                                     
                     
                                                 </div>
+                                                @endif
                                             </th>    
                                             
                                             </tr>

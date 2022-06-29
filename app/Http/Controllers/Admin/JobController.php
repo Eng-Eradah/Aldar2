@@ -6,17 +6,36 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Utilities\Toggle;
 use App\Models\Job;
 use App\Models\Lang;
+use App\Models\JobDetails;
 use Illuminate\Http\Request;
 use Validator;
+use Carbon\Carbon;
 
 class JobController extends Controller
 {
     //
-    public function index()
+    public function index($id=null)
     {
         //where('start_date','<',Carbon::now())->where('end_date','>',Carbon::now())
-        $Job = Job::get();
+        $Job = Job::when($id, function ($query, $id) {
+            // dd($query->whereDate('end_date','<=',now()->toDateString()));
+            return $query->whereDate('end_date','<',now()->toDateString());
+        })->get();
+        if($id)
         return view('admin.site.Jobs.index')
+            ->with('item', $Job)
+            ->with('id',$id);
+        else
+        return view('admin.site.Jobs.index')
+            ->with('item', $Job);
+
+    }
+    public function Employment($id)
+    {
+        //where('start_date','<',Carbon::now())->where('end_date','>',Carbon::now())
+        $Job = JobDetails::where('job_id',$id)->get();
+        
+        return view('admin.site.Jobs.employment')
             ->with('item', $Job);
 
     }

@@ -316,7 +316,7 @@ ul {
   font-weight: 700;
   line-height: 26px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+   
   margin-bottom: 3px;
 }
 
@@ -842,7 +842,7 @@ ul {
 .main-menu .main-menu__list>li:hover>a,
 .stricky-header .main-menu__list>li.current>a,
 .stricky-header .main-menu__list>li:hover>a {
-  color: var(--insur-black);
+  color: #be892d;
 }
 
 .main-menu .main-menu__list>li>ul,
@@ -986,7 +986,7 @@ ul {
 .main-menu__wrapper .main-menu__list>.megamenu {
   position: static;
 }
-
+ 
 .main-menu-three__main-menu-box .main-menu__list>.megamenu>ul,
 .main-menu-two__main-menu-box .main-menu__list>.megamenu>ul,
 .main-menu__wrapper .main-menu__list>.megamenu>ul {
@@ -1831,7 +1831,7 @@ ul {
 .main-menu-three__logo {
   display: block;
   float: left;
-  padding: 41px 0;
+  padding: 10px 0;
   padding-right: 17px;
 }
 
@@ -1888,8 +1888,8 @@ ul {
 
 .main-menu-three .main-menu__list>li,
 .stricky-header.main-menu-three .main-menu__list>li {
-  padding-top: 42px;
-  padding-bottom: 42px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .main-menu-three .main-menu__list>li+li,
@@ -2794,8 +2794,8 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  color: transparent;
-  -webkit-text-stroke: 1px #e0e4e8;
+  color: #015fc9;
+  -webkit-text-stroke: 1px #015fc9;
   font-size: 60px;
   line-height: 45px;
   font-weight: 700;
@@ -8914,6 +8914,7 @@ ul {
   padding: 117px 0 113px;
   background-color: var(--insur-extra);
   z-index: 1;
+  margin: 0 0 10px !important;
 }
 
 .page-header-bg {

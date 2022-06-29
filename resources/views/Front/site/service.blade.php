@@ -42,7 +42,7 @@
                                 style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;margin-bottun:10px">
                                 <div class="services-one__single">
 
-                                    <div class="service-one__content " style="height: 500px !important">
+                                    <div class="service-one__content " style="height: 350px !important">
 
                                         <h2 class="service-one__title"><a>{{ $service->title }}</a></h2>
                                         <p class="service-one__text">{!! $service->text !!}</p>

@@ -45,7 +45,7 @@ class AuthController extends Controller
         if(Auth::user()->hasRole('admin'))
         return redirect()->route('configure');
         elseif(Auth::user()->hasRole('lawyer'))
-        return redirect()->route('report');
+        return redirect()->route('reports');
         elseif(Auth::user()->hasRole('user'))
         return redirect()->route('userReport');
         else
