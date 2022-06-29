@@ -221,7 +221,8 @@
                        
 
                         @foreach ($Service as $service)
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp animated" data-wow-delay="100ms"
+                           
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp animated" data-wow-delay="100ms"
                                 style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;" >
                                 <div class="services-one__single">
 

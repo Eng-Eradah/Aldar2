@@ -73,22 +73,27 @@
                                                 
                                             
                                             </th>        
+                                            <th>
                                     
                                             @role('lawyer')
-                                            <th>
+                                           
+                                                    @if($data->lawyer->id==Auth::user()->id)
                                                 
-                                                <div class="btn-group">
+                                                        <div class="btn-group">
                                                     <a href="{{route('addreport',$data->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                                
                                                     @if($data->is_active==1)
                                                     <a href="{{route('toggle_report',$data->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                     @else
                                                     <a href="{{route('toggle_report',$data->id)}}" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                                  
+                                                </div>
+                                                    @endif
+                                                    @else 
+                                                    ---
                                                     @endif
                                                     
+                                                </th>  
                     
-                                                </div>
-                                            </th>  
                                            
                                             @endrole 
                                             

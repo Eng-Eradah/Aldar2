@@ -5,7 +5,10 @@ body {
   font-weight: 700;
   
 }
-
+.main-menu .main-menu__list>li>a,
+.stricky-header .main-menu__list>li>a {
+  font-size: 18px;
+}
 .feature-three__content {
   margin-right: 20px;
 }

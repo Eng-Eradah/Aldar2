@@ -843,6 +843,7 @@ ul {
 .stricky-header .main-menu__list>li.current>a,
 .stricky-header .main-menu__list>li:hover>a {
   color: #be892d;
+  border-bottom: solid  #be892d 2px;
 }
 
 .main-menu .main-menu__list>li>ul,
@@ -12233,3 +12234,20 @@ body.boxed-wrapper {
   -webkit-box-orient: vertical;  
   overflow: hidden;
 }
+.rightCSS { 
+  background: #16243d;
+  overflow: hidden;
+  color:#fff;
+} 
+.rightCSS div {
+  position: relative;
+  animation: CSSright linear 18s infinite;
+} 
+@keyframes CSSright {
+  0% { right: -100% }
+  100% { right: 100% }
+}
+.rightCSS:hover div {
+  animation-play-state: paused;
+}
+ 

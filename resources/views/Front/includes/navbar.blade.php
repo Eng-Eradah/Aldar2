@@ -44,18 +44,18 @@
          </div>
          <nav class="main-menu main-menu-three clearfix">
              <div class="main-menu-three__wrapper clearfix">
-                 <div class="container">
+                 <div class="">
                      <div class="main-menu-three__wrapper-inner clearfix">
                          <div class="main-menu-three__left">
                              <div class="main-menu-three__logo">
                                  <a class="navbar-brand" href="{{ route('home') }}"
                                      style="color: #015EAC;">{{ __('website.aldar') }} <span class="logo-dec"
                                          style="color: #be892d;">{{ __('website.arabic') }}</span></a>
-                             </div>
+                             </div>  
                              <div class="main-menu-three__main-menu-box">
                                  <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                  <ul class="main-menu__list">
-                                     <li   class="{{ (request()->segment(2) =='home') ? 'current' : '' }}">
+                                     <li   class="{{ (request()->segment(2) ==null) ? 'current' : '' }}">
                                          <a href="{{ route('home') }}">{{ __('website.home') }} </a>
                                      </li>
                                      <li  class="{{ (request()->segment(2) == 'about') ? 'current' : '' }}">
@@ -136,13 +136,11 @@
      <div class="stricky-header stricked-menu main-menu main-menu-three">
          <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
          @if($ads->count()>0)
-         <div style="background-color: #16243d;color:#fff">
-             @foreach ($ads as $adds)
-
-                 <marquee speed="normal"  behavior="loop">{{ $adds->title }}</marquee>
-                  
+            
+         <div class="rightCSS li"><div>
+                    @foreach ($ads as $adds){{ $adds->title }}
             @endforeach
-         </div>
+        </div></div>    
          @endif
 
      </div><!-- /.stricky-header -->
